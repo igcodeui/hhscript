@@ -40,7 +40,31 @@
 
 /* Separate Ticket to Work reference — isolated from all other scripts */
 .ticket-modal{width:min(740px,100%);background:linear-gradient(150deg,#122c4b,#0d1d34)}.ticket-modal h2{font-size:clamp(17px,2.6vw,23px);line-height:1.35}.ticket-question{margin-top:24px;padding:22px;border-left:4px solid #59b5ff;background:#172f50;border-radius:12px;font-size:clamp(18px,2.2vw,22px);line-height:1.6}.ticket-answer{margin-top:18px;padding:20px;border:1px solid #5282a9;background:#183554;border-radius:12px;line-height:1.7;font-size:18px}.ticket-answer[hidden]{display:none}.ticket-program-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.ticket-program-grid button{min-width:0;padding:13px;text-align:left}.ticket-handoff{margin-top:15px;padding:15px;border:1px solid #3d7396;border-radius:10px;background:#102a45;white-space:pre-line}.ticket-section-label{font-weight:800;color:#9fd2ff;margin-bottom:8px}@media(max-width:600px){.ticket-program-grid{grid-template-columns:1fr}}
-</style></head><body><header><div class="bar"><div class="brand">✦ HELPING HANDS <small>Interactive agent scripting guide</small></div><div class="nav"><button class="primary" id="openStateChecker" type="button">⌕ State Checker</button><button id="openCallback" type="button">☎ Callback Script</button><button id="openTicket" type="button">♿ Ticket to Work</button><button data-script="debt">Program Scripts ▾</button><button data-script="edu">Education Script</button><button data-rebut="debt">Debt rebuttals</button><button data-rebut="health">ACA / Medicare whys</button><button data-rebut="general">Other rebuttals</button><button class="danger" id="resetTop">↻ Reset Call</button></div><div class="programnav" id="programNav" aria-label="Program scripts"><button data-script="debt">Debt</button><button data-script="tax">Tax</button><button data-script="aca">ACA</button><button data-script="medicare">Medicare</button><button data-script="medsupp">Med Supp</button><button data-script="ssdi">SSDI</button><button data-script="mva">MVA</button><button data-script="internet">Internet</button><button data-script="edu">Education</button><button data-script="loan">Personal Loans</button><button data-script="slc">Student Loans (SLC)</button></div></div></header><main class="layout"><aside class="sidebar"><h3>Call flow</h3><div id="stages"></div><div class="progress"><i id="progressBar"></i></div><div class="tiny muted" id="counter"></div><p class="tiny muted">Guide only. No personal data collected, saved, or transmitted.</p><div class="alert tiny">Where source documents disagree about eligibility, confirm current program rules with your supervisor.</div></aside><section class="panel" aria-live="polite"><span class="pill" id="phase">START</span><h1 id="heading">Welcome</h1><div id="bodyText" class="speak"></div><div class="instruction" id="note"></div><div id="eduCandidate" class="candidate" aria-live="polite"></div><div class="choices" id="choices"></div><div class="footerline"><button id="backBtn">← Back</button><span class="tiny muted" id="trail"></span><button class="danger" id="resetBottom">↻ Reset Call</button></div><div class="source" id="source"></div></section></main><div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="rebutTitle"><div class="modal"><div class="modalHead"><h2 id="rebutTitle">Rebuttal library</h2><button id="closeModal">✕ Close</button></div><div class="tabs"><button data-tab="debt">Debt</button><button data-tab="health">ACA / Medicare</button><button data-tab="general">General questions</button></div><div id="rebutContent"></div></div></div><div class="overlay" id="scriptOverlay" role="dialog" aria-modal="true" aria-labelledby="programTitle"><div class="modal"><div class="modalHead"><h2 id="programTitle">Program script</h2><button id="closeProgram">✕ Close</button></div><div id="programContent" class="rebuttal" style="white-space:pre-line"></div><p class="muted tiny">Agent reference only. Follow supervisor-approved eligibility and verify application status before saying it was accepted.</p><div class="choices"><button class="primary" id="jumpTransfer">✓ Lead agreed — Open Transfer Script</button><button id="jumpProgram">Return to screening flow</button><button id="closeProgramBottom">Return to current step</button></div><p class="tiny muted" style="margin-top:12px;line-height:1.5">Only use “Open Transfer Script” after the lead meets the program requirements and gives a clear YES to the transfer request in the pre-transfer script.</p></div></div><div class="overlay" id="callbackOverlay" role="dialog" aria-modal="true" aria-labelledby="callbackTitle"><div class="modal callback-modal"><div class="modalHead"><h2 id="callbackTitle">Callback Script <span class="tiny muted">• Separate reference</span></h2><button id="closeCallback" type="button">✕ Close</button></div><p class="callback-intro">Use this section for callbacks when the lead’s details may not yet be available. Choose a program to view its script and screening requirements. This is a reference script; it does not collect or save lead information.</p><div class="callback-grid"><nav class="callback-menu" id="callbackMenu" aria-label="Callback program"></nav><section class="callback-copy" id="callbackContent" aria-live="polite"></section></div></div></div><div class="overlay" id="ticketOverlay" role="dialog" aria-modal="true" aria-labelledby="ticketTitle"><div class="modal ticket-modal"><div class="modalHead"><h2 id="ticketTitle">TICKET TO WORK SCRIPT - IF LEAD HAS SSDI-</h2><button id="closeTicket" type="button">✕ Close</button></div><div class="ticket-question">Since you are already receiving benefits from SSDI, would you say , that income is enough for you and your family?</div><div class="choices"><button type="button" id="ticketNo" class="primary">NO</button><button type="button" id="ticketYes">YES</button></div><div id="ticketAnswer" class="ticket-answer" aria-live="polite" hidden></div></div></div><div class="overlay" id="stateOverlay" role="dialog" aria-modal="true" aria-labelledby="stateTitle"><div class="modal state-modal"><div class="modalHead"><h2 id="stateTitle">State Checker <span class="tiny muted">• Agent only</span></h2><button id="closeState" type="button">✕ Close</button></div><p class="state-helper">Search a U.S. state or choose one below. Green means the state appears on the provided routing list; No buyer means it is not on that program's list. These are reference lists, not live buyer availability.</p><label for="stateInput" class="state-search-label">Search state</label><input id="stateInput" class="state-search" type="search" placeholder="e.g., Florida, FL, New Jersey" autocomplete="off" spellcheck="false"><div class="state-picker"><select id="stateSelect" aria-label="Choose a state"><option value="">Choose a state…</option></select><button id="clearState" class="state-clear" type="button">Clear</button></div><div id="stateFeedback" class="tiny muted" aria-live="polite">Select a state to view program routing.</div><div class="state-results" id="stateResults" aria-live="polite"></div><div class="state-legend"><strong>ACA Synergy / Temporary:</strong> If you check the state and it's good for only ACA-and you got a hung up, that means- no available agent for ACA buyer and it's a RED state for the other ACA buyer that's why it didn't route to them. When this happens transition right away to another vertical- like Internet
+
+/* Debt Inbound interactive flow — isolated from the existing call flow */
+.debt-inbound-modal{width:min(900px,100%);background:linear-gradient(150deg,#122c4b,#0d1d34);box-shadow:0 28px 90px #0009;border-color:#3b5e88}
+.debt-inbound-modal .modalHead{position:sticky;top:-26px;z-index:2;padding:8px 0 14px;background:#10213bf5;border-bottom:1px solid #294766}
+.debt-inbound-content{margin-top:18px;padding:clamp(15px,3vw,24px);background:#142a47;border:1px solid #36577c;border-radius:12px;overflow-wrap:anywhere;line-height:1.65;color:#e3efff;font-size:16px;max-height:70vh;overflow:auto}
+.debt-inbound-step-label{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:15px;color:#9dcaff;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.debt-inbound-step-count{color:#9bb5d6;font-weight:600;letter-spacing:0;text-transform:none}
+.debt-inbound-script{padding:20px 21px;border-left:4px solid #52a7ff;border-radius:11px;background:#172f50;color:#f0f6ff;font-size:clamp(17px,2.1vw,21px);line-height:1.65;white-space:pre-line}
+.debt-inbound-agent-note{margin-top:15px;padding:13px 15px;border:1px solid #735e35;border-left:4px solid #e9b65d;border-radius:10px;background:#302d2b;color:#ffe3b0;line-height:1.55}
+.debt-inbound-agent-note strong{display:block;margin-bottom:5px;color:#ffd58a;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.debt-inbound-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.debt-inbound-field{padding:13px 15px;border:1px solid #395878;background:#102440;border-radius:9px;color:#c8ddf7;font-weight:750}
+.debt-inbound-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.debt-inbound-actions button{flex:1 1 220px;min-width:0;padding:14px 15px;text-align:left;white-space:normal;line-height:1.4}
+.debt-inbound-actions button.primary{background:linear-gradient(110deg,#1d5cb0,#2879d8);border-color:#75b9ff}
+.debt-inbound-actions button.debt-inbound-negative{background:#422737;border-color:#b45368;color:#ffdce2}
+.debt-inbound-actions button.debt-inbound-good{background:linear-gradient(100deg,#12664e,#168563);border-color:#48c9a0;color:#effff9}
+.debt-inbound-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px solid #294766}
+.debt-inbound-footer button{padding:10px 13px;font-size:13px}
+.debt-inbound-footer button:disabled{opacity:.35;cursor:not-allowed}
+.debt-inbound-program-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:15px}
+.debt-inbound-program-grid button{padding:12px;text-align:left;min-width:0}
+.debt-inbound-complete{margin-top:16px;padding:15px;border:1px solid #3f8a73;border-radius:11px;background:#123a35;color:#ccffed;line-height:1.6}
+@media(max-width:600px){.debt-inbound-content{padding:13px}.debt-inbound-script{padding:16px;font-size:17px}.debt-inbound-fields,.debt-inbound-program-grid{grid-template-columns:1fr}.debt-inbound-actions button{flex-basis:100%}.debt-inbound-footer{align-items:stretch}.debt-inbound-footer button{flex:1}}
+</style></head><body><header><div class="bar"><div class="brand">✦ HELPING HANDS <small>Interactive agent scripting guide</small></div><div class="nav"><button class="primary" id="openStateChecker" type="button">⌕ State Checker</button><button id="openCallback" type="button">☎ Callback Script</button><button id="openTicket" type="button">♿ Ticket to Work</button><button id="openDebtInbound" type="button">Debt Inbound</button><button data-script="debt">Program Scripts ▾</button><button data-script="edu">Education Script</button><button data-rebut="debt">Debt rebuttals</button><button data-rebut="health">ACA / Medicare whys</button><button data-rebut="general">Other rebuttals</button><button class="danger" id="resetTop">↻ Reset Call</button></div><div class="programnav" id="programNav" aria-label="Program scripts"><button data-script="debt">Debt</button><button data-script="tax">Tax</button><button data-script="aca">ACA</button><button data-script="medicare">Medicare</button><button data-script="medsupp">Med Supp</button><button data-script="ssdi">SSDI</button><button data-script="mva">MVA</button><button data-script="internet">Internet</button><button data-script="edu">Education</button><button data-script="loan">Personal Loans</button><button data-script="slc">Student Loans (SLC)</button></div></div></header><main class="layout"><aside class="sidebar"><h3>Call flow</h3><div id="stages"></div><div class="progress"><i id="progressBar"></i></div><div class="tiny muted" id="counter"></div><p class="tiny muted">Guide only. No personal data collected, saved, or transmitted.</p><div class="alert tiny">Where source documents disagree about eligibility, confirm current program rules with your supervisor.</div></aside><section class="panel" aria-live="polite"><span class="pill" id="phase">START</span><h1 id="heading">Welcome</h1><div id="bodyText" class="speak"></div><div class="instruction" id="note"></div><div id="eduCandidate" class="candidate" aria-live="polite"></div><div class="choices" id="choices"></div><div class="footerline"><button id="backBtn">← Back</button><span class="tiny muted" id="trail"></span><button class="danger" id="resetBottom">↻ Reset Call</button></div><div class="source" id="source"></div></section></main><div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="rebutTitle"><div class="modal"><div class="modalHead"><h2 id="rebutTitle">Rebuttal library</h2><button id="closeModal">✕ Close</button></div><div class="tabs"><button data-tab="debt">Debt</button><button data-tab="health">ACA / Medicare</button><button data-tab="general">General questions</button></div><div id="rebutContent"></div></div></div><div class="overlay" id="scriptOverlay" role="dialog" aria-modal="true" aria-labelledby="programTitle"><div class="modal"><div class="modalHead"><h2 id="programTitle">Program script</h2><button id="closeProgram">✕ Close</button></div><div id="programContent" class="rebuttal" style="white-space:pre-line"></div><p class="muted tiny">Agent reference only. Follow supervisor-approved eligibility and verify application status before saying it was accepted.</p><div class="choices"><button class="primary" id="jumpTransfer">✓ Lead agreed — Open Transfer Script</button><button id="jumpProgram">Return to screening flow</button><button id="closeProgramBottom">Return to current step</button></div><p class="tiny muted" style="margin-top:12px;line-height:1.5">Only use “Open Transfer Script” after the lead meets the program requirements and gives a clear YES to the transfer request in the pre-transfer script.</p></div></div><div class="overlay" id="callbackOverlay" role="dialog" aria-modal="true" aria-labelledby="callbackTitle"><div class="modal callback-modal"><div class="modalHead"><h2 id="callbackTitle">Callback Script <span class="tiny muted">• Separate reference</span></h2><button id="closeCallback" type="button">✕ Close</button></div><p class="callback-intro">Use this section for callbacks when the lead’s details may not yet be available. Choose a program to view its script and screening requirements. This is a reference script; it does not collect or save lead information.</p><div class="callback-grid"><nav class="callback-menu" id="callbackMenu" aria-label="Callback program"></nav><section class="callback-copy" id="callbackContent" aria-live="polite"></section></div></div></div><div class="overlay" id="ticketOverlay" role="dialog" aria-modal="true" aria-labelledby="ticketTitle"><div class="modal ticket-modal"><div class="modalHead"><h2 id="ticketTitle">TICKET TO WORK SCRIPT - IF LEAD HAS SSDI-</h2><button id="closeTicket" type="button">✕ Close</button></div><div class="ticket-question">Since you are already receiving benefits from SSDI, would you say , that income is enough for you and your family?</div><div class="choices"><button type="button" id="ticketNo" class="primary">NO</button><button type="button" id="ticketYes">YES</button></div><div id="ticketAnswer" class="ticket-answer" aria-live="polite" hidden></div></div></div><div class="overlay" id="debtInboundOverlay" role="dialog" aria-modal="true" aria-labelledby="debtInboundTitle"><div class="modal debt-inbound-modal"><div class="modalHead"><h2 id="debtInboundTitle">Debt Inbound</h2><button id="closeDebtInbound" type="button">✕ Close</button></div><div id="debtInboundContent" class="debt-inbound-content" aria-live="polite"></div></div></div><div class="overlay" id="stateOverlay" role="dialog" aria-modal="true" aria-labelledby="stateTitle"><div class="modal state-modal"><div class="modalHead"><h2 id="stateTitle">State Checker <span class="tiny muted">• Agent only</span></h2><button id="closeState" type="button">✕ Close</button></div><p class="state-helper">Search a U.S. state or choose one below. Green means the state appears on the provided routing list; No buyer means it is not on that program's list. These are reference lists, not live buyer availability.</p><label for="stateInput" class="state-search-label">Search state</label><input id="stateInput" class="state-search" type="search" placeholder="e.g., Florida, FL, New Jersey" autocomplete="off" spellcheck="false"><div class="state-picker"><select id="stateSelect" aria-label="Choose a state"><option value="">Choose a state…</option></select><button id="clearState" class="state-clear" type="button">Clear</button></div><div id="stateFeedback" class="tiny muted" aria-live="polite">Select a state to view program routing.</div><div class="state-results" id="stateResults" aria-live="polite"></div><div class="state-legend"><strong>ACA Synergy / Temporary:</strong> If you check the state and it's good for only ACA-and you got a hung up, that means- no available agent for ACA buyer and it's a RED state for the other ACA buyer that's why it didn't route to them. When this happens transition right away to another vertical- like Internet
 
  <strong><br></div></div></div><script>
 
@@ -491,4 +515,224 @@ document.getElementById('ticketYes').addEventListener('click',()=>{
 });
 ticketOverlay.addEventListener('click',e=>{if(e.target===ticketOverlay)closeTicket();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTicket();});
+
+// Debt Inbound interactive flow. Kept separate from the existing main call flow.
+const debtInboundOverlay = document.getElementById('debtInboundOverlay');
+const debtInboundContent = document.getElementById('debtInboundContent');
+const debtInboundHistory = [];
+let debtInboundCurrentStep = 'opening';
+
+const debtInboundSteps = {
+  opening: {
+    label: 'Opening',
+    script: 'Thank you for calling Helping Hands Debt Relief Department, this is ( agent name) speaking. Are you calling about debt relief program?',
+    choices: [
+      {label: 'YES — Proceed with screening for debt', next: 'state_zip', style: 'primary'},
+      {label: 'NO — SCREEN AS NORMAL HH CALLS', action: 'normal', style: 'negative'}
+    ]
+  },
+  state_zip: {
+    label: 'State and zipcode',
+    script: 'Ok. Great. Can you pls confirm your State and zipcode',
+    fields: ['State', 'Zipcode'],
+    choices: [{label: 'Continue — State and zipcode provided', next: 'intro_questions', style: 'primary'}]
+  },
+  intro_questions: {
+    label: 'Screening introduction',
+    script: 'Thank you for providing those. I will ask a few questions to understand your situation.',
+    choices: [{label: 'Continue to debt amount question', next: 'total_debt', style: 'primary'}]
+  },
+  total_debt: {
+    label: 'Question 1 of 3',
+    script: 'How much total credit card, unsecured loans, payday loans, medical bills, and repossessed car loans  are you struggling to pay?',
+    choices: [{label: 'Continue — Total amount confirmed', next: 'unsecured_amount', style: 'primary'}]
+  },
+  unsecured_amount: {
+    label: 'Question 2 of 3',
+    script: 'How much of these loans are from Credit Card and Personal loans? _____',
+    choices: [{label: 'Continue — Credit Card and Personal loans amount confirmed', next: 'medical_amount', style: 'primary'}]
+  },
+  medical_amount: {
+    label: 'Question 3 of 3',
+    script: 'How much of these loans are from Medical bills and other debts?________',
+    choices: [{label: 'Continue to choose the applicable screening route', next: 'route_choice', style: 'primary'}]
+  },
+  route_choice: {
+    label: 'Choose the screening route',
+    script: 'Choose the route that matches the amounts the lead provided.',
+    agentNote: 'Use the medical-bills route when medical bills and other debts are $2K or more. Use the pure-unsecured route when the debt is pure unsecured and is $5K or more. If neither applicable threshold is met, mark NQ and offer other programs.',
+    choices: [
+      {label: 'With medical bills / other debts — $2K up', next: 'medical_payment', style: 'primary'},
+      {label: 'Pure unsecured — $5K and up', next: 'unsecured_payment', style: 'primary'},
+      {label: 'Neither threshold is met — NQ', next: 'not_qualified', style: 'negative'}
+    ]
+  },
+  medical_payment: {
+    label: 'Medical bills payment screening',
+    script: 'Are you currently paying $135 monthly towards these debts?',
+    agentNote: 'IF with MED BILLS: 2K up – Must be YES',
+    choices: [
+      {label: 'YES — Meets payment requirement', next: 'qualified_intro', style: 'good'},
+      {label: 'NO — NQ, offer other programs', next: 'not_qualified', style: 'negative'}
+    ]
+  },
+  unsecured_payment: {
+    label: 'Pure unsecured payment screening',
+    script: 'Are you currently paying at least $250 monthly towards these debts?',
+    agentNote: 'IF PURE UNSECURED -5k and up — Must be YES',
+    choices: [
+      {label: 'YES — Meets payment requirement', next: 'qualified_intro', style: 'good'},
+      {label: 'NO — NQ, offer other programs', next: 'not_qualified', style: 'negative'}
+    ]
+  },
+  not_qualified: {
+    label: 'NQ — Offer other programs',
+    script: '***IF NQ- OFFER OTHER PROGRAMS***',
+    agentNote: 'Choose another existing program script to continue with the normal Helping Hands call flow. The selected program will open separately; its wording and flow are not changed here.',
+    programs: true,
+    choices: [{label: 'Return to current call flow', action: 'normal', style: 'negative'}]
+  },
+  qualified_intro: {
+    label: 'Qualified — Program introduction',
+    script: 'Ok,  based on your zip code and the information you provided you may qualify to debt relief program that can reduce your monthly payments or eliminate your debts depending on your eligibility.',
+    choices: [{label: 'Continue', next: 'specialist_offer', style: 'primary'}]
+  },
+  specialist_offer: {
+    label: 'Ask permission to connect',
+    script: 'I can connect you directly with a debt program specialist who can review your options, explain how the program works, and help you determine whether it’s a good fit for your situation. Afterward, I’ll follow up with you to make sure you’ve received your benefits email and see if you need any further assistance.\n\nWould it be alright if I placed you on a brief hold while I connect you with the specialist?',
+    choices: [
+      {label: 'YES — Connect with the debt program specialist', next: 'transfer_complete', style: 'good'},
+      {label: 'NO — Return to current call flow', next: 'hold_declined', style: 'negative'}
+    ]
+  },
+  hold_declined: {
+    label: 'Lead declined the hold',
+    script: 'The supplied Debt Inbound script does not include a separate spoken response for NO to the hold question.',
+    agentNote: 'Use your approved handling for a declined transfer. No additional wording has been added to the source script.',
+    choices: [
+      {label: 'Back to the permission question', next: 'specialist_offer', style: 'primary'},
+      {label: 'Close and return to current call flow', action: 'normal', style: 'negative'}
+    ]
+  },
+  transfer_complete: {
+    label: 'Transfer approved',
+    script: 'Would it be alright if I placed you on a brief hold while I connect you with the specialist?',
+    agentNote: 'The lead answered YES. Proceed with the specialist connection according to your normal transfer procedure.',
+    complete: true,
+    choices: [{label: 'Close Debt Inbound', action: 'close', style: 'good'}]
+  }
+};
+
+function debtInboundAddText(parent, tag, className, value) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  node.textContent = value;
+  parent.appendChild(node);
+  return node;
+}
+
+function renderDebtInboundStep(stepId) {
+  const step = debtInboundSteps[stepId] || debtInboundSteps.opening;
+  debtInboundCurrentStep = stepId;
+  debtInboundContent.replaceChildren();
+
+  const top = document.createElement('div');
+  top.className = 'debt-inbound-step-label';
+  debtInboundAddText(top, 'span', '', step.label);
+  debtInboundAddText(top, 'span', 'debt-inbound-step-count', 'Interactive Debt Inbound');
+  debtInboundContent.appendChild(top);
+
+  debtInboundAddText(debtInboundContent, 'div', 'debt-inbound-script', step.script);
+  if (step.fields && step.fields.length) {
+    const fields = document.createElement('div');
+    fields.className = 'debt-inbound-fields';
+    step.fields.forEach(name => debtInboundAddText(fields, 'div', 'debt-inbound-field', name));
+    debtInboundContent.appendChild(fields);
+  }
+  if (step.agentNote) {
+    const note = document.createElement('div');
+    note.className = 'debt-inbound-agent-note';
+    debtInboundAddText(note, 'strong', '', 'Agent note — not read aloud');
+    note.appendChild(document.createTextNode(step.agentNote));
+    debtInboundContent.appendChild(note);
+  }
+  if (step.complete) {
+    const done = document.createElement('div');
+    done.className = 'debt-inbound-complete';
+    done.textContent = 'YES selected — continue with the specialist transfer.';
+    debtInboundContent.appendChild(done);
+  }
+
+  if (step.programs) {
+    const programs = [
+      ['tax','Tax'], ['aca','ACA'], ['medicare','Medicare'], ['medsupp','Med Supp'],
+      ['ssdi','SSDI'], ['mva','MVA'], ['internet','Internet'], ['edu','Education'],
+      ['loan','Personal Loans'], ['slc','Student Loans (SLC)']
+    ];
+    const grid = document.createElement('div');
+    grid.className = 'debt-inbound-program-grid';
+    programs.forEach(([key, name]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = 'Open ' + name + ' Script';
+      button.addEventListener('click', () => {
+        closeDebtInbound();
+        showProgram(key);
+      });
+      grid.appendChild(button);
+    });
+    debtInboundContent.appendChild(grid);
+  }
+
+  const actions = document.createElement('div');
+  actions.className = 'debt-inbound-actions';
+  (step.choices || []).forEach(choice => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = choice.label;
+    if (choice.style === 'primary') button.classList.add('primary');
+    if (choice.style === 'negative') button.classList.add('debt-inbound-negative');
+    if (choice.style === 'good') button.classList.add('debt-inbound-good');
+    button.addEventListener('click', () => {
+      if (choice.action === 'normal' || choice.action === 'close') {
+        closeDebtInbound();
+        return;
+      }
+      if (choice.next) {
+        debtInboundHistory.push(debtInboundCurrentStep);
+        renderDebtInboundStep(choice.next);
+      }
+    });
+    actions.appendChild(button);
+  });
+  debtInboundContent.appendChild(actions);
+
+  const footer = document.createElement('div');
+  footer.className = 'debt-inbound-footer';
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.textContent = '← Back';
+  back.disabled = debtInboundHistory.length === 0;
+  back.addEventListener('click', () => {
+    const previous = debtInboundHistory.pop();
+    if (previous) renderDebtInboundStep(previous);
+  });
+  const restart = document.createElement('button');
+  restart.type = 'button';
+  restart.textContent = '↻ Restart Debt Inbound';
+  restart.addEventListener('click', startDebtInbound);
+  footer.append(back, restart);
+  debtInboundContent.appendChild(footer);
+}
+
+function startDebtInbound() {
+  debtInboundHistory.length = 0;
+  renderDebtInboundStep('opening');
+  debtInboundOverlay.classList.add('show');
+}
+function closeDebtInbound() { debtInboundOverlay.classList.remove('show'); }
+document.getElementById('openDebtInbound').addEventListener('click', startDebtInbound);
+document.getElementById('closeDebtInbound').addEventListener('click', closeDebtInbound);
+debtInboundOverlay.addEventListener('click', e => { if (e.target === debtInboundOverlay) closeDebtInbound(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDebtInbound(); });
 </script></body></html>
