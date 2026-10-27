@@ -165,6 +165,21 @@ const callbackScripts = {
     ['Question 2','Are you currently paying at least $250 monthly towards these debts?'],
     ['Eligibility requirement','Must be YES. Proceed to pretransfer script if the requirement is met.']
   ]},
+  debtmedical:{title:'Debt Medical Bills', body:[
+    ['Program introduction','Consolidation and reduction to a fraction of the cost on what you are currently paying towards your unsecured debts. I just need to confirm:'],
+    ['Question 1','Do you have any credit card debts, payday loans, personal loans, any unsecured loans, or repossessed car loans that you are currently struggling to pay?'],
+    ['Question 2','How much would you say the total amount is?'],
+    ['Question 3','How much of that is from credit cards and unsecured loans?'],
+    ['Question 4','Okay, then how much debt do you have under medical bills, payday loans, and repossessed car loans?'],
+    ['Question 4','For these unsecured debts, are you currently paying at least $135 per month?'],
+    ['Eligibility requirement','Must be YES. Proceed to pretransfer script if the requirement is met.']
+  ], pretransferTitle:'Debt Medical Bills — Pre-Transfer Script', pretransfer:[
+    'I have good news for you! Your application for hardship support has been accepted. Please keep an eye out for an email from info@helpinghandsact.com with the subject “BENEFITS ENCLOSED.” I’m your case manager, and I’ll stay in touch to help ensure you receive the support you need.',
+    'In the meantime, you mentioned having $[debt amount] in debt and making monthly payments of at least $135. I understand how challenging it can be to manage those payments while trying to cover your family’s everyday needs.',
+    'The good news is that there may be a debt assistance program worth exploring that could help reduce your monthly payments, depending on your eligibility. This could potentially free up more money for other important household expenses.',
+    'I can connect you directly with a debt program specialist who can review your options, explain how the program works, and help you determine whether it’s a good fit for your situation. Afterward, I’ll follow up with you to make sure you’ve received your benefits email and see if you need any further assistance.',
+    'Would it be alright if I placed you on a brief hold while I connect you with the specialist?'
+  ]},
   tax:{title:'Tax', body:[
     ['Program introduction','Tax relief program that can put you and your family at ease. I just need to confirm:'],
     ['Question 1','Do you have any outstanding Tax debts to your state or to the IRS of at least $8K or more?'],
@@ -207,7 +222,7 @@ const callbackScripts = {
 };
 const callbackMenu=document.getElementById('callbackMenu');
 const callbackContent=document.getElementById('callbackContent');
-const callbackToProgram={medicareaca:'aca',medicare:'medicare',debt:'debt',tax:'tax',internet:'internet',ssdi:'ssdi',mva:'mva',edu:'edu',slc:'slc'};
+const callbackToProgram={medicareaca:'aca',medicare:'medicare',debt:'debt',debtmedical:'debt',tax:'tax',internet:'internet',ssdi:'ssdi',mva:'mva',edu:'edu',slc:'slc'};
 function renderCallback(key){
   const item=callbackScripts[key]||callbackScripts.overview;
   callbackMenu.querySelectorAll('button').forEach(b=>b.classList.toggle('selected',b.dataset.callback===key));
@@ -225,10 +240,18 @@ function renderCallback(key){
     const action=document.createElement('div');action.className='callback-action';
     const actionTitle=document.createElement('h4');actionTitle.textContent='Qualified and ready to proceed?';
     const actionText=document.createElement('p');actionText.textContent='After confirming every required screening answer and the applicable program rules, open the matching pre-transfer script. This will not change or advance the main call flow.';
-    const btn=document.createElement('button');btn.type='button';btn.className='pretransfer-btn';btn.textContent='✓ Open '+(programNames[program]||program)+' Pre-Transfer Script';
-    btn.addEventListener('click',()=>{closeCallback();showProgram(program);});
-    const hint=document.createElement('div');hint.className='action-hint';hint.textContent='Agent action • Click only after eligibility is confirmed.';
-    action.append(actionTitle,actionText,btn,hint);callbackContent.appendChild(action);
+    const btn=document.createElement('button');btn.type='button';btn.className='pretransfer-btn';btn.textContent='✓ Open '+(item.pretransferTitle||((programNames[program]||program)+' Pre-Transfer Script'));
+    const hint=document.createElement('div');hint.className='action-hint';hint.textContent='Agent action • Use only after qualification is confirmed.';
+    if(item.pretransfer){
+      const pre=document.createElement('div');pre.className='callback-copy';pre.style.marginTop='16px';pre.style.scrollMarginTop='12px';
+      const preTitle=document.createElement('h3');preTitle.textContent=item.pretransferTitle||'Pre-Transfer Script';pre.appendChild(preTitle);
+      item.pretransfer.forEach(copy=>{const p=document.createElement('p');p.textContent=copy;p.style.margin='0 0 16px';pre.appendChild(p);});
+      btn.addEventListener('click',()=>pre.scrollIntoView({behavior:'smooth',block:'start'}));
+      action.append(actionTitle,actionText,btn,hint);callbackContent.append(action,pre);
+    }else{
+      btn.addEventListener('click',()=>{closeCallback();showProgram(program);});
+      action.append(actionTitle,actionText,btn,hint);callbackContent.appendChild(action);
+    }
   }
 }
 Object.entries(callbackScripts).forEach(([key,item])=>{const b=document.createElement('button');b.type='button';b.dataset.callback=key;b.textContent=item.title;b.addEventListener('click',()=>renderCallback(key));callbackMenu.appendChild(b);});
