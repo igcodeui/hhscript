@@ -262,19 +262,19 @@ add('intro_benefits','Intro','Explain the next step','I do have some great news 
 
 add('intro_income_transition','Intro','Transition to income screening','Let’s start by checking if we can improve your income.','Continue into the appropriate age-based qualification flow. Select the age bracket based on the age verified in your authorized system; this guide does not collect birthdate.',[opt('Continue — Select age track','age')]);
 
-add('age','Routing','Choose the correct script track','Can you please confirm you age.','Age determines which of the three source scripts to follow. Do not request or store their date of birth here.',[opt('Age 18–48 • ACA','young_income'),opt('Age 49–63 • SSDI','middle_income'),opt('Age 64+ • Medicare','senior_income')]);
+add('age','Routing','Choose the correct script track','Can you please confirm your age?','Age determines which of the three source scripts to follow. Do not request or store their date of birth here.',[opt('Age 18–48 • ACA','young_income'),opt('Age 49–63 • SSDI','middle_income'),opt('Age 64+ • Medicare','senior_income')]);
 
 let eduInterest=false, slcCandidate=false, medicalDebtCandidate=false, incomeRoute='other';
 
-function income(id,track,next){add(id,'Income screening',track+' — employment and income','Are you currently employed? And how much is your annual income?','Agent routing only. Complete the SLC screening before continuing. For ages 64+, skip Education screening only; do not skip SLC. Do not enter income in this guide.',[opt('Employed • $30,000 or more','edu_precheck_tax'),opt('$24,000 or more • other employment','edu_precheck_debt'),opt('Below $24,000','edu_precheck_other'),opt('Other / skip screening','edu_precheck_other')]);}
+function income(id,track,next){add(id,'Income screening',track+' — employment and income','Are you currently employed? And how much is your annual income?','Agent routing only. Complete SLC and Education routing before continuing. For ages 64+, skip Education screening only; do not skip SLC. For ages 18–48 and 49–63, selecting Below $24,000 routes to Debt screening after SLC and Education routing, before the age-specific program track. Do not enter income in this guide.',[opt('Employed • $30,000 or more','edu_precheck_tax'),opt('$24,000 or more • other employment','edu_precheck_debt'),opt('Below $24,000','edu_precheck_below24'),opt('Other / skip screening','edu_precheck_other')]);}
 
 income('young_income','Age 18–48','aca_coverage');income('middle_income','Age 49–63','ssdi_fulltime');income('senior_income','Age 64+','medicare_parts');
 
-for(const [id,label] of [['edu_precheck_tax','Employed, $30K+'],['edu_precheck_debt','Income $24K+'],['edu_precheck_other','Other income']]) add(id,'SLC screening','Check current school enrollment','Are you currently enrolled in school?','SLC qualification requires that the member is NOT currently enrolled in school. If not enrolled, screen for SLC. If qualified, mark the member as an SLC candidate and continue the normal screening flow; do not transfer at this step.',[opt('Yes — currently enrolled',()=>chooseEnrollment(true,id)),opt('No — not enrolled',()=>chooseEnrollment(false,id))]);
+for(const [id,label] of [['edu_precheck_tax','Employed, $30K+'],['edu_precheck_debt','Income $24K+'],['edu_precheck_below24','Below $24K'],['edu_precheck_other','Other income']]) add(id,'SLC screening','Check current school enrollment','Are you currently enrolled in school?','SLC qualification requires that the member is NOT currently enrolled in school. If not enrolled, screen for SLC. If qualified, mark the member as an SLC candidate and continue the normal screening flow; do not transfer at this step.',[opt('Yes — currently enrolled',()=>chooseEnrollment(true,id)),opt('No — not enrolled',()=>chooseEnrollment(false,id))]);
 
-function routeAfterSlc(){return incomeRoute==='tax'?'tax_q':incomeRoute==='debt'?'debt_q1':fallback[activeTrack];}
+function routeAfterSlc(){if(incomeRoute==='tax')return 'tax_q';if(incomeRoute==='debt')return 'debt_q1';if(incomeRoute==='below24'&&(activeTrack==='young'||activeTrack==='middle'))return 'debt_q1';return fallback[activeTrack];}
 
-function chooseEnrollment(enrolled,id){incomeRoute=id==='edu_precheck_tax'?'tax':id==='edu_precheck_debt'?'debt':'other';slcCandidate=false;if(enrolled){eduInterest=false;return routeAfterSlc();}return 'slc_fedloan';}
+function chooseEnrollment(enrolled,id){incomeRoute=id==='edu_precheck_tax'?'tax':id==='edu_precheck_debt'?'debt':id==='edu_precheck_below24'?'below24':'other';slcCandidate=false;if(enrolled){eduInterest=false;return routeAfterSlc();}return 'slc_fedloan';}
 
 function markSlcCandidate(){slcCandidate=true;return activeTrack==='senior'?routeAfterSlc():'edu_grant_interest';}
 
