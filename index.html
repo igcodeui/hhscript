@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Helping Hands | Agent Call Flow</title><style>
 
-:root{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Arial;color:#dceaff;background:#081426}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#142e57,#081426 52%);min-height:100vh}button{font:inherit;cursor:pointer}header{position:sticky;top:0;z-index:10;background:#081427ef;backdrop-filter:blur(18px);border-bottom:1px solid #27446b}.bar{max-width:1250px;margin:auto;padding:16px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.05em;font-size:17px;margin-right:auto}.brand small{display:block;font-weight:500;color:#83a6d3;letter-spacing:0;font-size:11px}.nav{display:flex;gap:7px;flex-wrap:wrap}button{background:#183259;border:1px solid #35577e;color:#eaf3ff;padding:11px 15px;border-radius:10px;font-weight:650}button:hover,button:focus-visible{border-color:#78bcff;background:#254b7d}button:focus-visible{outline:2px solid #8fd3ff;outline-offset:2px}.primary{background:#2771d3;border-color:#4192f5}.danger{border-color:#b45368;color:#ffccd4;background:#472537}.layout{max-width:1250px;margin:30px auto;padding:0 22px;display:grid;grid-template-columns:265px minmax(0,1fr);gap:24px}.sidebar,.panel{background:#101f37;border:1px solid #2c4467;border-radius:18px;box-shadow:0 22px 70px #02091645}.sidebar{padding:21px;align-self:start}.muted{color:#91a9c9}.tiny{font-size:12px}.sidebar h3{font-size:12px;letter-spacing:.13em;color:#91aed3;text-transform:uppercase;margin:0 0 16px}.track{padding:11px;border-radius:9px;margin:7px 0;color:#9db4d2;font-size:14px;border:1px solid transparent}.track{display:block;width:100%;text-align:left;background:transparent;border-color:transparent;padding:11px;border-radius:9px;margin:7px 0;color:#9db4d2;font-size:14px;font-weight:500}
+:root{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Arial;color:#dceaff;background:#081426}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#142e57,#081426 52%);min-height:100vh}button{font:inherit;cursor:pointer}header{position:sticky;top:0;z-index:10;background:#081427ef;backdrop-filter:blur(18px);border-bottom:1px solid #27446b}.bar{max-width:1250px;margin:auto;padding:16px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.05em;font-size:17px;margin-right:auto}.brand small{display:block;font-weight:500;color:#83a6d3;letter-spacing:0;font-size:11px}.nav{display:flex;gap:7px;flex-wrap:wrap}button{background:#183259;border:1px solid #35577e;color:#eaf3ff;padding:11px 15px;border-radius:10px;font-weight:650}button:hover,button:focus-visible{border-color:#78bcff;background:#254b7d}button:focus-visible{outline:2px solid #8fd3ff;outline-offset:2px}button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.35)}.primary{background:#2771d3;border-color:#4192f5}.danger{border-color:#b45368;color:#ffccd4;background:#472537}.layout{max-width:1250px;margin:30px auto;padding:0 22px;display:grid;grid-template-columns:265px minmax(0,1fr);gap:24px}.sidebar,.panel{background:#101f37;border:1px solid #2c4467;border-radius:18px;box-shadow:0 22px 70px #02091645}.sidebar{padding:21px;align-self:start}.muted{color:#91a9c9}.tiny{font-size:12px}.sidebar h3{font-size:12px;letter-spacing:.13em;color:#91aed3;text-transform:uppercase;margin:0 0 16px}.track{padding:11px;border-radius:9px;margin:7px 0;color:#9db4d2;font-size:14px;border:1px solid transparent}.track{display:block;width:100%;text-align:left;background:transparent;border-color:transparent;padding:11px;border-radius:9px;margin:7px 0;color:#9db4d2;font-size:14px;font-weight:500}
 .track:hover{color:#fff;background:#19375d;border-color:#35577e}
 .track.active{color:#fff;background:#203f67;border-color:#4b80bc}.panel{padding:clamp(22px,5vw,42px);min-height:480px}.pill{display:inline-block;background:#143f6a;color:#a7d5ff;padding:7px 12px;border-radius:40px;font-size:12px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}.panel h1{font-size:clamp(26px,3vw,38px);letter-spacing:-.035em;margin:17px 0 13px}.speak{background:#172c4c;border-left:4px solid #52a7ff;border-radius:10px;padding:21px 23px;font-size:clamp(18px,2.1vw,23px);line-height:1.55;white-space:pre-line}.instruction{color:#a6bfe0;line-height:1.6;margin:21px 0}.choices{display:flex;flex-wrap:wrap;gap:11px;margin-top:25px}.choices button{flex:1;min-width:160px;padding:16px}.footerline{margin-top:27px;padding-top:17px;border-top:1px solid #294260;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.progress{background:#1b3558;height:7px;border-radius:99px;overflow:hidden;margin:21px 0 10px}.progress i{display:block;background:#49a5ff;height:100%;transition:width .2s}.overlay{position:fixed;inset:0;z-index:50;background:#020715bd;display:none;align-items:center;justify-content:center;padding:20px}.overlay.show{display:flex}.modal{background:#11233e;border:1px solid #4c6791;border-radius:20px;width:min(760px,100%);max-height:88vh;overflow:auto;padding:26px}.modalHead{display:flex;justify-content:space-between;align-items:center;gap:15px}.modal h2{margin:0}.tabs{display:flex;gap:8px;margin:22px 0;flex-wrap:wrap}.tabs button.selected{background:#2771d3}.rebuttal{background:#1a3153;padding:19px;border-radius:11px;margin:13px 0;line-height:1.6}.rebuttal h3{margin:0 0 8px;color:#89c7ff;font-size:16px}.alert{background:#342d2d;border:1px solid #88644a;padding:13px;border-radius:9px;color:#ffd9a6;margin:14px 0}.tag{display:inline-block;border:1px solid #4d6587;padding:4px 8px;border-radius:8px;color:#b1c9ea;font-size:12px;margin:3px}.source{font-size:12px;color:#829dbf;margin-top:20px}#backBtn:disabled{opacity:.35;cursor:not-allowed}.programnav{display:flex;gap:7px;max-width:1250px;margin:0 auto;padding:0 22px 12px;flex-wrap:wrap}.programnav button{padding:7px 11px;font-size:12px;background:#112742}.candidate{display:inline-block;margin-top:14px;padding:9px 13px;background:#145340;border:1px solid #46a889;border-radius:9px;color:#c8fff0;font-weight:750}.candidate:empty{display:none}@media(max-width:780px){.layout{grid-template-columns:1fr}.sidebar{display:none}.panel{min-height:0}.bar{padding:13px}.nav button{padding:8px}.choices button{min-width:120px}}@media print{header,.sidebar,.choices,.footerline{display:none}body{background:white;color:black}.layout{display:block}.panel{box-shadow:none;border:0}.speak{color:black}}
 
@@ -88,7 +88,7 @@ const programScripts={"debt": "I have good news for you! Your application for ha
 
 const programNames={"debt": "Debt", "tax": "Tax", "aca": "ACA", "medsupp": "Med Supp", "medicare": "Medicare", "ssdi": "SSDI", "mva": "Motor Vehicle Accident", "internet": "Internet Service", "edu": "Education", "loan": "Personal Loans", "slc": "Student Loans (SLC)"};
 
-const programDestinations={"debt": "debt_q1", "tax": "tax_q", "aca": "aca_coverage", "medicare": "medicare_parts", "ssdi": "ssdi_fulltime", "mva": "mva_q", "internet": "internet_offer", "edu": "edu_gate", "loan": "loan_score", "slc": "slc_eligibility"};
+const programDestinations={"debt": "debt_q1", "tax": "tax_q", "aca": "aca_coverage", "medicare": "medicare_start", "ssdi": "ssdi_fulltime", "mva": "mva_q", "internet": "internet_offer", "edu": "edu_gate", "loan": "loan_score", "slc": "slc_eligibility"};
 const transferDestinations={"debt":"debt_transfer","tax":"tax_transfer","aca":"aca_transfer","medicare":"medicare_transfer","ssdi":"ssdi_transfer","mva":"mva_transfer","internet":"internet_transfer","edu":"edu_transfer","slc":"slc_transfer","loan":"loan_transfer"};
 
 
@@ -291,7 +291,7 @@ function renderCallback(key){
   }
 }
 Object.entries(callbackScripts).forEach(([key,item])=>{const b=document.createElement('button');b.type='button';b.dataset.callback=key;b.textContent=item.title;b.addEventListener('click',()=>renderCallback(key));callbackMenu.appendChild(b);});
-function openCallback(){if(isDebtFlowRestricted()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}document.getElementById('callbackOverlay').classList.add('show');renderCallback('overview');}
+function openCallback(){if(isDebtFlowRestricted()){markPriorityNavigationBlocked();return;}document.getElementById('callbackOverlay').classList.add('show');renderCallback('overview');}
 function closeCallback(){document.getElementById('callbackOverlay').classList.remove('show');}
 document.getElementById('openCallback').addEventListener('click',openCallback);document.getElementById('closeCallback').addEventListener('click',closeCallback);document.getElementById('callbackOverlay').addEventListener('click',e=>{if(e.target.id==='callbackOverlay')closeCallback();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCallback();});
 
@@ -328,9 +328,96 @@ let debtPriorityStatus='none'; // none | qualified-pending | transfer-in-progres
 let debtCandidateType='';
 let debtPriorityAttemptWarning=false;
 const DEBT_LOCK_ALLOWED_NODES=new Set(['debt_offer','debt_hesitant','debt_transfer']);
+const MEDICARE_PATH_NODES=['medicare_start','medicare_age','medicare_age_rule_check','medicare_parts','medicare_medicaid','medicare_supp_afford','medicare_needs','medicare_offer','medicare_hesitant','medicare_transfer','medicare_advantage_transfer','medicare_advantage_fallback_transfer','medicare_supplement_transfer'];
+
+// General priority lock: once any buyer/program screening is qualified, finish that offer/transfer decision before screening another buyer.
+let programPriorityStatus='none'; // none | qualified-pending | transfer-in-progress | declined | not-qualified | closed | completed
+let programPriorityKey='';
+let programPriorityName='';
+let programPriorityOfferNode='';
+let programPriorityTransferNode='';
+let programPriorityMode='main'; // main | standalone
+let programPriorityFlow=null;
+let programPriorityAllowedNodes=new Set();
+let programPriorityAttemptWarning=false;
+const PROGRAM_PRIORITY_CONFIG={
+  tax:{name:'Tax',offerNode:'tax_offer',transferNode:'tax_transfer',allowedNodes:['tax_offer','tax_transfer']},
+  loan:{name:'Personal Loans',offerNode:'loan_offer',transferNode:'loan_transfer',allowedNodes:['loan_offer','loan_transfer']},
+  aca:{name:'ACA',offerNode:'aca_offer',transferNode:'aca_transfer',allowedNodes:['aca_offer','aca_transfer']},
+  medicare:{name:'Medicare',family:'medicare',offerNode:'medicare_offer',transferNode:'medicare_transfer',allowedNodes:MEDICARE_PATH_NODES},
+  medicare_advantage:{name:'Medicare Advantage',family:'medicare',offerNode:'',transferNode:'medicare_advantage_transfer',allowedNodes:MEDICARE_PATH_NODES},
+  medicare_advantage_fallback:{name:'Medicare Advantage',family:'medicare',offerNode:'',transferNode:'medicare_advantage_fallback_transfer',allowedNodes:MEDICARE_PATH_NODES},
+  medicare_supplement:{name:'Medicare Supplement',family:'medicare',offerNode:'',transferNode:'medicare_supplement_transfer',allowedNodes:MEDICARE_PATH_NODES},
+  ssdi:{name:'SSDI',offerNode:'ssdi_offer',transferNode:'ssdi_transfer',allowedNodes:['ssdi_offer','ssdi_transfer']},
+  mva:{name:'MVA',offerNode:'mva_offer',transferNode:'mva_transfer',allowedNodes:['mva_offer','mva_transfer']},
+  internet:{name:'Internet',offerNode:'',transferNode:'internet_transfer',allowedNodes:['internet_transfer']},
+  edu:{name:'Education',offerNode:'edu_offer',transferNode:'edu_transfer',allowedNodes:['edu_offer','edu_transfer']},
+  slc:{name:'Student Loans (SLC)',offerNode:'slc_offer',transferNode:'slc_transfer',allowedNodes:['slc_offer','slc_transfer']}
+};
+const PRIORITY_OFFER_NODE_TO_KEY=Object.fromEntries(Object.entries(PROGRAM_PRIORITY_CONFIG).filter(([,c])=>c.offerNode).map(([key,c])=>[c.offerNode,key]));
+const PRIORITY_TRANSFER_NODE_TO_KEY=Object.fromEntries(Object.entries(PROGRAM_PRIORITY_CONFIG).filter(([,c])=>c.transferNode).map(([key,c])=>[c.transferNode,key]));
+function priorityFamily(key){return PROGRAM_PRIORITY_CONFIG[key]?.family||key;}
+function samePriorityFamily(a,b){return !!a&&!!b&&priorityFamily(a)===priorityFamily(b);}
 function isDebtPriorityLocked(){return debtPriorityStatus==='qualified-pending'||debtPriorityStatus==='transfer-in-progress';}
-// A completed Debt transfer ends this lead's call flow; only a deliberate new-call reset is allowed.
-function isDebtFlowRestricted(){return isDebtPriorityLocked()||debtPriorityStatus==='completed';}
+function isProgramPriorityLocked(){return programPriorityStatus==='qualified-pending'||programPriorityStatus==='transfer-in-progress';}
+function isAnyPriorityDecisionLocked(){return isDebtPriorityLocked()||isProgramPriorityLocked();}
+function isAnyPriorityCompleted(){return debtPriorityStatus==='completed'||programPriorityStatus==='completed';}
+function isDebtFlowRestricted(){return isAnyPriorityDecisionLocked()||isAnyPriorityCompleted();}
+function canNavigateWithinPriority(target){
+  if(isDebtPriorityLocked()){
+    if(debtPriorityStatus==='qualified-pending')return target==='debt_offer'||target==='debt_hesitant'||(target==='debt_transfer'&&current==='debt_offer');
+    return debtPriorityStatus==='transfer-in-progress'&&(DEBT_LOCK_ALLOWED_NODES.has(target)||(target==='end'&&current==='debt_transfer'));
+  }
+  if(!isProgramPriorityLocked()) return true;
+  if(programPriorityMode==='standalone') return false;
+  if(programPriorityStatus==='qualified-pending'){
+    if(target===programPriorityTransferNode&&programPriorityTransferNode&&programPriorityAllowedNodes.has(current))return true;
+    return programPriorityAllowedNodes.has(target)&&target!==programPriorityTransferNode;
+  }
+  return programPriorityStatus==='transfer-in-progress'&&(programPriorityAllowedNodes.has(target)||(target==='end'&&current===programPriorityTransferNode));
+}
+function markPriorityNavigationBlocked(){
+  if(isDebtPriorityLocked()||debtPriorityStatus==='completed') debtPriorityAttemptWarning=true;
+  else programPriorityAttemptWarning=true;
+  updateDebtPriorityNotice();
+}
+function beginMainProgramPriority(key,status='qualified-pending'){
+  const cfg=PROGRAM_PRIORITY_CONFIG[key];if(!cfg)return;
+  programPriorityKey=key;programPriorityName=cfg.name;programPriorityStatus=status;
+  programPriorityOfferNode=cfg.offerNode||'';programPriorityTransferNode=cfg.transferNode||'';
+  programPriorityMode='main';programPriorityFlow=null;programPriorityAllowedNodes=new Set(cfg.allowedNodes||[]);programPriorityAttemptWarning=false;
+}
+function beginStandaloneProgramPriority(key,name,flow){
+  programPriorityKey=key;programPriorityName=name;programPriorityStatus='qualified-pending';
+  programPriorityOfferNode='';programPriorityTransferNode='';programPriorityMode='standalone';programPriorityFlow=flow||null;
+  programPriorityAllowedNodes=new Set();programPriorityAttemptWarning=false;
+  updateDebtPriorityNotice();syncScreenerButtons();
+}
+function setStandalonePriorityStep(flow,stepId){
+  const key=flow===null?'debt-inbound':flow===slcInboundFlow?'slc-inbound':flow===acaInboundFlow?'aca-inbound':'';
+  if(!key)return;
+  const name=flow===null?'Debt Inbound':flow.title;
+  if(stepId==='qualified_intro'){
+    if(programPriorityMode!=='standalone'||programPriorityFlow!==(flow||'debt-inbound')||!isProgramPriorityLocked()) beginStandaloneProgramPriority(key,name,flow||'debt-inbound');
+    else {programPriorityStatus='qualified-pending';programPriorityAttemptWarning=false;}
+  }else if(stepId==='transfer_complete'&&programPriorityMode==='standalone'&&programPriorityKey===key){
+    programPriorityStatus='transfer-in-progress';programPriorityAttemptWarning=false;
+  }else if(stepId==='not_qualified'&&programPriorityMode==='standalone'&&programPriorityKey===key){
+    programPriorityStatus='not-qualified';programPriorityAttemptWarning=false;
+  }
+  updateDebtPriorityNotice();syncScreenerButtons();
+}
+function closeStandalonePriority(flow){
+  const key=flow===null?'debt-inbound':flow===slcInboundFlow?'slc-inbound':flow===acaInboundFlow?'aca-inbound':'';
+  if(!key||programPriorityMode!=='standalone'||programPriorityKey!==key||!isProgramPriorityLocked())return;
+  const step=flow===null?debtInboundCurrentStep:flow.currentStep;
+  programPriorityStatus=step==='transfer_complete'&&programPriorityStatus==='transfer-in-progress'?'completed':'closed';
+  programPriorityAttemptWarning=false;updateDebtPriorityNotice();syncScreenerButtons();
+}
+function declineProgramOffer(key,next){if(programPriorityKey===key&&isProgramPriorityLocked()){programPriorityStatus='declined';programPriorityAttemptWarning=false;}return next;}
+function closeProgramTransfer(key,next){if(programPriorityKey===key&&isProgramPriorityLocked()){programPriorityStatus='closed';programPriorityAttemptWarning=false;}return next;}
+function clearProgramPriorityState(){programPriorityStatus='none';programPriorityKey='';programPriorityName='';programPriorityOfferNode='';programPriorityTransferNode='';programPriorityMode='main';programPriorityFlow=null;programPriorityAllowedNodes=new Set();programPriorityAttemptWarning=false;}
+// A completed transfer ends this lead's flow. A deliberate Reset starts a new lead.
 function clearDebtPriorityState(){debtPriorityStatus='none';debtCandidateType='';medicalDebtCandidate=false;debtPriorityAttemptWarning=false;}
 function beginPureUnsecuredDebtRoute(){clearDebtPriorityState();return 'debt_q2';}
 function beginMedicalDebtRoute(){clearDebtPriorityState();return 'debt_med_q2';}
@@ -343,16 +430,30 @@ function completeDebtTransfer(){debtPriorityStatus='completed';debtPriorityAttem
 function exploreOtherProgramsAfterDebt(){debtPriorityStatus='other-programs';debtPriorityAttemptWarning=false;return 'finance_after_debt';}
 function updateDebtPriorityNotice(){
   const box=document.getElementById('debtPriorityNotice');if(!box)return;
-  let title='',detail='',resolved=false;
-  if(debtPriorityStatus==='qualified-pending'){title='DEBT PRIORITY LOCK — QUALIFIED LEAD';detail='The lead meets the '+(debtCandidateType==='medical-bills'?'Debt 2K+ Medical Bills ($135/month screen)':'Debt 5K+ Pure Unsecured ($250/month screen)')+'. Complete the Debt offer and record the lead’s decision before moving to Internet or another program.';}
-  else if(debtPriorityStatus==='transfer-in-progress'){title='DEBT TRANSFER IN PROGRESS';detail='The lead agreed to speak with a Debt specialist. Complete the Debt transfer, or explicitly choose the option to explore other programs if the transfer cannot proceed.';}
-  else if(debtPriorityStatus==='declined'){title='DEBT OFFER DECLINED — OTHER PROGRAMS AVAILABLE';detail='The lead did not agree to the Debt offer. You may continue screening for other relevant programs.';resolved=true;}
-  else if(debtPriorityStatus==='not-qualified'){title='DEBT CRITERIA NOT MET — OTHER PROGRAMS AVAILABLE';detail='The selected Debt screening criteria were not met. Continue to the appropriate alternative program.';resolved=true;}
-  else if(debtPriorityStatus==='completed'){title='DEBT TRANSFER COMPLETED — CALL FINISHED';detail='The Debt transfer is complete. Do not screen other programs for this same lead. Use Start a new call or Reset Call only when beginning a new lead.';resolved=true;}
-  else if(debtPriorityStatus==='other-programs'){title='DEBT PATH CLOSED — OTHER PROGRAMS AVAILABLE';detail='The Debt path is closed for this decision. Continue with the next relevant program.';resolved=true;}
+  let title='',detail='',resolved=false,warning=false;
+  if(isDebtPriorityLocked()||debtPriorityStatus==='completed'){
+    if(debtPriorityStatus==='qualified-pending'){title='DEBT PRIORITY LOCK — QUALIFIED LEAD';detail='The lead meets the '+(debtCandidateType==='medical-bills'?'Debt 2K+ Medical Bills ($135/month screen)':'Debt 5K+ Pure Unsecured ($250/month screen)')+'. Complete the Debt offer and record the lead’s decision before moving to another program.';}
+    else if(debtPriorityStatus==='transfer-in-progress'){title='DEBT TRANSFER IN PROGRESS';detail='The lead agreed to speak with a Debt specialist. Complete the Debt transfer, or explicitly close the Debt path if the transfer cannot proceed.';}
+    else {title='DEBT TRANSFER COMPLETED — CALL FINISHED';detail='The Debt transfer is complete. Do not screen other programs for this same lead. Reset only when beginning a new lead.';resolved=true;}
+    warning=debtPriorityAttemptWarning;
+  }else if(isProgramPriorityLocked()||programPriorityStatus==='completed'){
+    if(programPriorityStatus==='qualified-pending'){title=programPriorityName.toUpperCase()+' PRIORITY LOCK — QUALIFIED LEAD';detail='The lead met the screening criteria for '+programPriorityName+'. Complete this program’s offer and record the lead’s decision before screening another buyer.';}
+    else if(programPriorityStatus==='transfer-in-progress'){title=programPriorityName.toUpperCase()+' TRANSFER IN PROGRESS';detail='The lead agreed to proceed with '+programPriorityName+'. Complete this transfer, or explicitly close this program path if the transfer cannot proceed.';}
+    else {title=programPriorityName.toUpperCase()+' TRANSFER COMPLETED — CALL FINISHED';detail='The transfer is complete. Do not screen other buyers for this same lead. Reset only when beginning a new lead.';resolved=true;}
+    warning=programPriorityAttemptWarning;
+  }else if(programPriorityStatus!=='none'){
+    const label=programPriorityName||'Program';
+    if(programPriorityStatus==='declined'){title=label.toUpperCase()+' DECLINED — OTHER PROGRAMS AVAILABLE';detail='The lead declined this program. Continue to other relevant screening paths.';resolved=true;}
+    else if(programPriorityStatus==='not-qualified'){title=label.toUpperCase()+' CRITERIA NOT MET — OTHER PROGRAMS AVAILABLE';detail='The lead did not meet this program’s screening criteria. Continue to the appropriate alternative program.';resolved=true;}
+    else if(programPriorityStatus==='closed'){title=label.toUpperCase()+' PATH CLOSED — OTHER PROGRAMS AVAILABLE';detail='This program path was explicitly closed. Continue to the next relevant program.';resolved=true;}
+    warning=programPriorityAttemptWarning;
+  }else if(['declined','not-qualified','other-programs'].includes(debtPriorityStatus)){
+    title=debtPriorityStatus==='declined'?'DEBT OFFER DECLINED — OTHER PROGRAMS AVAILABLE':debtPriorityStatus==='not-qualified'?'DEBT CRITERIA NOT MET — OTHER PROGRAMS AVAILABLE':'DEBT PATH CLOSED — OTHER PROGRAMS AVAILABLE';
+    detail=debtPriorityStatus==='declined'?'The lead declined the Debt offer. You may continue screening for other relevant programs.':debtPriorityStatus==='not-qualified'?'The selected Debt screening criteria were not met. Continue to the appropriate alternative program.':'The Debt path is closed for this decision. Continue with the next relevant program.';resolved=true;warning=debtPriorityAttemptWarning;
+  }
   box.replaceChildren();box.className='debt-priority-notice'+(resolved?' resolved':'');box.hidden=!title;if(!title)return;
   const head=document.createElement('strong');head.textContent=title;const body=document.createElement('span');body.textContent=detail;box.append(head,body);
-  if(debtPriorityAttemptWarning){const warning=document.createElement('span');warning.className='debt-priority-warning';warning.textContent=debtPriorityStatus==='completed'?'Navigation blocked: the Debt transfer is complete. Start a new call only for a new lead.':'Navigation blocked: finish the Debt offer decision first. Other screening paths unlock only if the lead declines, does not meet Debt criteria, or the Debt path is explicitly closed.';box.appendChild(warning);}
+  if(warning){const warningNode=document.createElement('span');warningNode.className='debt-priority-warning';warningNode.textContent=(debtPriorityStatus==='completed'||programPriorityStatus==='completed')?'Navigation blocked: the transfer is complete. Start a new call only for a new lead.':'Navigation blocked: finish the current program decision first. Other buyer screenings remain locked until the lead declines, does not qualify, or this program path is explicitly closed.';box.appendChild(warningNode);}
 }
 
 function income(id,track,next){add(id,'Income screening',track+' — employment and income','Are you currently employed? And how much is your annual income?','Agent routing only. Complete SLC and Education routing before continuing. For ages 64+, skip Education screening only; do not skip SLC. For ages 18–48 and 49–63, selecting Below $24,000 routes to Debt screening after SLC and Education routing, before the age-specific program track. Do not enter income in this guide.',[opt('Employed • $30,000 or more','edu_precheck_tax'),opt('$24,000 or more • other employment','edu_precheck_debt'),opt('Below $24,000','edu_precheck_below24'),opt('Other / skip screening','edu_precheck_other')]);}
@@ -379,11 +480,11 @@ add('slc_amount','SLC screening','Confirm federal student loan amount','Approxim
 
 add('slc_eligibility','SLC screening','Confirm SLC qualification','[AGENT ONLY] Confirm both conditions: the member is NOT currently enrolled in school and has at least $10,000 in federal student loans.','If both conditions are met, mark the member as an SLC candidate and continue the normal screening flow. Do NOT jump directly to the SLC transfer script from this qualification step.',[opt('Both criteria confirmed — mark SLC qualified and continue',markSlcCandidate),opt('Criteria not met — continue to grants question',clearSlcCandidate)]);
 
-add('slc_offer','SLC transfer','Offer free student loan consultation',programScripts['slc'],'QUALIFICATION: Not currently enrolled in school AND at least $10,000 in federal student loans. Replace [amount] with the member’s actual stated federal student loan amount before reading the script.',[opt('Yes — transfer to student loan specialist','slc_transfer'),opt('No — continue to grants question','edu_grant_interest')],'SLC script provided');
+add('slc_offer','SLC transfer','Offer free student loan consultation',programScripts['slc'],'QUALIFICATION: Not currently enrolled in school AND at least $10,000 in federal student loans. Replace [amount] with the member’s actual stated federal student loan amount before reading the script.',[opt('Yes — transfer to student loan specialist','slc_transfer'),opt('No — decline SLC; continue screening',()=>declineProgramOffer('slc','edu_grant_interest'))],'SLC script provided');
 
 N['slc_offer'].script=programScripts['slc']; N['slc_offer'].source='SLC script provided';
 
-add('slc_transfer','Warm transfer','Student loan specialist transfer','Thank you. Please hold for a brief moment while I connect you with the student loan specialist for your free consultation. They can explain the repayment options that may be available to you.','Confirm the member agreed to the transfer. The SLC screening criteria must be met before the transfer.',[opt('Transfer complete — finish call','end'),opt('Return to main screening',()=>routeAfterSlc())],'SLC transfer');
+add('slc_transfer','Warm transfer','Student loan specialist transfer','Thank you. Please hold for a brief moment while I connect you with the student loan specialist for your free consultation. They can explain the repayment options that may be available to you.','Confirm the member agreed to the transfer. The SLC screening criteria must be met before the transfer.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close SLC path',()=>closeProgramTransfer('slc',routeAfterSlc()))],'SLC transfer');
 
 add('debt_q1','Debt screening','Debt amount and type','Do you have any credit card debts, payday loans, personal loans, any unsecured loans, or repossessed car loans that you are currently struggling to pay?\n\nHow much would you say the total amount is?\n\nHow much of that is from credit cards and unsecured loans?\n\nOkay, then how much debt do you have under medical bills, payday loans, and repossessed car loans?','Use the member’s actual amounts to select the applicable route. The $5K+ Pure Unsecured and $2K+ Medical Bills paths have different monthly payment requirements.',[opt('Debt 5K+ — PURE UNSECURED (credit cards and personal loans)',beginPureUnsecuredDebtRoute),opt('Debt 2K+ — MEDICAL BILLS / PAYDAY / REPOSSESSED CAR',beginMedicalDebtRoute),opt('Neither threshold met — NQ / other programs',markDebtNotQualified)]);
 
@@ -403,29 +504,29 @@ add('finance_after_debt','Financial screening','Additional program screening','W
 
 add('loan_score','Personal Loans','Credit score question','Do you happen to know your credit score? Is it 550 or higher?','Only use this branch when the source prerequisites are met. This guide does not record any score.',[opt('Yes, 550+ — offer','loan_offer'),opt('No / below 550 / unknown','tax_q')]);
 
-add('loan_offer','Personal Loans','Offer specialist','There may be a personal loan option worth exploring. A specialist can review the program, available terms, and whether you qualify. May I connect you?','Avoid promising approval or funding. Transfer with clear consent.',[opt('Yes — transfer','loan_transfer'),opt('No — next','tax_q')]);
+add('loan_offer','Personal Loans','Offer specialist','There may be a personal loan option worth exploring. A specialist can review the program, available terms, and whether you qualify. May I connect you?','Avoid promising approval or funding. Transfer with clear consent.',[opt('Yes — transfer','loan_transfer'),opt('No — decline Personal Loans; continue screening',()=>declineProgramOffer('loan','tax_q'))]);
 
-add('loan_transfer','Transfer','Personal Loans transfer','Thank you. I’ll connect you with a specialist who can discuss the available loan options and eligibility. You may briefly hear ringing or music.','Source indicates a cold transfer for the 64+ personal loan track. Follow your current approved transfer procedure.',[opt('Complete','end'),opt('Continue other programs','tax_q')]);
+add('loan_transfer','Transfer','Personal Loans transfer','Thank you. I’ll connect you with a specialist who can discuss the available loan options and eligibility. You may briefly hear ringing or music.','Source indicates a cold transfer for the 64+ personal loan track. Follow your current approved transfer procedure.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close Personal Loans path',()=>closeProgramTransfer('loan','tax_q'))]);
 
 add('tax_q','Tax screening','Outstanding state or IRS tax debt','Do you have any outstanding tax debts to your state or the IRS of at least $10,000 or more?','Source thresholds conflict: one screen asks about $10,000+, but an instruction says $8,000+ with $30,000 income and employment. Verify minimum before offering; do not claim qualification solely based on this guide.',[opt('Meets screening criteria — Tax offer','tax_offer'),opt('No / below minimum — continue Debt','debt_q1')]);
 
-add('tax_offer','Tax transfer','Offer Tax specialist','Based on what you shared, I can connect you with a specialist who can explain potential tax relief options and check whether you qualify. Is that okay?','Make no guarantees of settlement or government approval.',[opt('Yes — warm transfer','tax_transfer'),opt('No — continue Debt','debt_q1')]);
+add('tax_offer','Tax transfer','Offer Tax specialist','Based on what you shared, I can connect you with a specialist who can explain potential tax relief options and check whether you qualify. Is that okay?','Make no guarantees of settlement or government approval.',[opt('Yes — warm transfer','tax_transfer'),opt('No — decline Tax; continue to Debt',()=>declineProgramOffer('tax','debt_q1'))]);
 
 N['tax_offer'].script=programScripts['tax']; N['tax_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
-add('tax_transfer','Warm transfer','Tax handoff','Just to confirm, I’m transferring you to a senior agent to discuss tax relief options and whether you might qualify. Please stay on the line.\n\nTo the specialist: I have a Helping Hands community member interested in reviewing possible tax-relief options. I’ll step off the line now for privacy.','Confirm YES before connecting. Warm transfer.',[opt('Complete','end'),opt('Explore other programs','age_fallback')]);
+add('tax_transfer','Warm transfer','Tax handoff','Just to confirm, I’m transferring you to a senior agent to discuss tax relief options and whether you might qualify. Please stay on the line.\n\nTo the specialist: I have a Helping Hands community member interested in reviewing possible tax-relief options. I’ll step off the line now for privacy.','Confirm YES before connecting. Warm transfer.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close Tax path',()=>closeProgramTransfer('tax','age_fallback'))]);
 
-let activeTrack='young';const fallback={young:'aca_coverage',middle:'ssdi_fulltime',senior:'medicare_parts'};
+let activeTrack='young';const fallback={young:'aca_coverage',middle:'ssdi_fulltime',senior:'medicare_age'};
 
 add('age_fallback','Routing','Continue with the age-specific script','Let’s see what other available programs may fit your situation.','Continue the track selected earlier.',[opt('Continue',()=>fallback[activeTrack])]);
 
 add('aca_coverage','ACA screening','Check existing coverage','Do you currently have Medicaid, Medicare, TRICARE, Medi-Cal, VA benefits, employer-provided health insurance, or private insurance?','The 18–48 document sends members with no coverage to the ACA offer. Do not determine formal eligibility.',[opt('No existing coverage','aca_offer'),opt('Has coverage / unsure','mva_q')]);
 
-add('aca_offer','ACA transfer','Offer coverage review',programScripts['aca'],'REQUIRED: Get a clear YES before transferring. If the member does not clearly agree, do not transfer. Premiums and financial assistance depend on eligibility; do not guarantee coverage or savings. Use ACA / Medicare Whys for affordability concerns.',[opt('Yes — warm transfer','aca_transfer'),opt('No — continue','mva_q')]);
+add('aca_offer','ACA transfer','Offer coverage review',programScripts['aca'],'REQUIRED: Get a clear YES before transferring. If the member does not clearly agree, do not transfer. Premiums and financial assistance depend on eligibility; do not guarantee coverage or savings. Use ACA / Medicare Whys for affordability concerns.',[opt('Yes — warm transfer','aca_transfer'),opt('No — decline ACA; continue screening',()=>declineProgramOffer('aca','mva_q'))]);
 
 N['aca_offer'].script=programScripts['aca']; N['aca_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
-add('aca_transfer','Warm transfer','ACA handshake','Great. I’ll connect you with a specialist who can review ACA coverage options and potential savings. Please stay on the line.\n\nTo the specialist: I have a Helping Hands member interested in exploring health-insurance options. Thank you.','WARM TRANSFER. Confirm clear consent.',[opt('Complete','end'),opt('Explore other programs','mva_q')]);
+add('aca_transfer','Warm transfer','ACA handshake','Great. I’ll connect you with a specialist who can review ACA coverage options and potential savings. Please stay on the line.\n\nTo the specialist: I have a Helping Hands member interested in exploring health-insurance options. Thank you.','WARM TRANSFER. Confirm clear consent.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close ACA path',()=>closeProgramTransfer('aca','mva_q'))]);
 
 add('ssdi_fulltime','SSDI screening','Full-time work','Are you currently working full time?','Source: yes → next program.',[opt('Yes — next program','ssdi_utility'),opt('No — continue','ssdi_job')]);
 
@@ -441,45 +542,61 @@ add('ssdi_benefits','SSDI screening','Existing disability benefits','Are you cur
 
 add('ssdi_lawyer','SSDI screening','Existing SSDI lawyer','Have you already hired a lawyer for your SSDI claim?','Source indicates no → SSDI priority-one transfer candidate.',[opt('Yes','ssdi_utility'),opt('No — offer SSDI','ssdi_offer')]);
 
-add('ssdi_offer','SSDI transfer','Offer SSDI specialist','A specialist may be able to review whether you qualify for disability benefits. Would you like me to connect you for an eligibility discussion?','Do not promise a benefit amount or approval. The source prioritizes SSDI for qualified members.',[opt('Yes — transfer','ssdi_transfer'),opt('No — continue','ssdi_utility')]);
+add('ssdi_offer','SSDI transfer','Offer SSDI specialist','A specialist may be able to review whether you qualify for disability benefits. Would you like me to connect you for an eligibility discussion?','Do not promise a benefit amount or approval. The source prioritizes SSDI for qualified members.',[opt('Yes — transfer','ssdi_transfer'),opt('No — decline SSDI; continue screening',()=>declineProgramOffer('ssdi','ssdi_utility'))]);
 
 N['ssdi_offer'].script=programScripts['ssdi']; N['ssdi_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
-add('ssdi_transfer','Transfer','SSDI transfer','Great. The disability specialist can discuss your situation and potential program options. Please stay on the line while I connect you.','Confirm YES. Source instructs the transferring agent to disconnect after the sales agent successfully connects.',[opt('Complete','end'),opt('Continue screening','ssdi_utility')]);
+add('ssdi_transfer','Transfer','SSDI transfer','Great. The disability specialist can discuss your situation and potential program options. Please stay on the line while I connect you.','Confirm YES. Source instructs the transferring agent to disconnect after the sales agent successfully connects.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close SSDI path',()=>closeProgramTransfer('ssdi','ssdi_utility'))]);
 
 add('ssdi_utility','Utility screening','PIPP / CAPP assistance','Are you already receiving utility bill assistance through PIPP or CAPP?','If asked: PIPP and CAPP are utility assistance programs with income-based arrangements. The source says yes is a disqualifier for an unspecified utility plan, so do not infer eligibility without a current program guide.',[opt('Continue — other programs','mva_q')]);
 
-add('medicare_parts','Medicare screening','Medicare Parts A and B','Do you currently have Medicare Parts A and B?','Source: no → Internet.',[opt('Yes','medicare_medicaid'),opt('No','internet_offer')]);
+// Updated Medicare screening from MEDICARE SCRIPT 1.docx. The sidebar opens the full inbound version;
+// the standard age-based flow enters at the age confirmation, avoiding a duplicate opening greeting.
+add('medicare_start','Medicare screening','Medicare inbound — opening','Thank you for calling Helping Hand Health and Benefits Department, this is ( agent name) speaking. Are you calling about Medicare Health Benefit Options?','MEDICARE SCRIPT 1.docx — If YES, proceed with Medicare screening. If NO, screen as normal HH calls.',[opt('YES — Proceed with Medicare screening','medicare_age'),opt('NO — Screen as normal HH calls','start')],'MEDICARE SCRIPT 1.docx');
 
-add('medicare_medicaid','Medicare screening','Medicaid status','Are you currently on Medicaid?','Source: yes → do not offer this Medicare flow; move to Internet.',[opt('No — continue','medicare_needs'),opt('Yes — Internet','internet_offer')]);
+add('medicare_age','Medicare screening','Confirm age','Ok. Great. Can you pls confirm your AGE','For this screening, proceed with Medicare only if the caller is 65 or older. If the caller is 64 or younger, offer another program.',[opt('65 and up — Proceed','medicare_parts'),opt('64 and below — Offer other program','medicare_other_programs')],'MEDICARE SCRIPT 1.docx');
 
-add('medicare_needs','Medicare screening','Coverage needs','Who is your current Medicare plan with? What do you like most about it? If you could improve one thing—copays, dental, vision, hearing, or other coverage—what would it be?','Do not enter provider or coverage answers here. This is simply the read-aloud guide.',[opt('Continue — offer review','medicare_offer')]);
+add('medicare_parts','Medicare screening','Medicare Parts A and B','Do you have Medicare Parts A and B- Must have A&B to Qualify','If NO A & B, offer another program.',[opt('YES — Has Parts A and B','medicare_medicaid'),opt('NO — Offer other program','medicare_other_programs')],'MEDICARE SCRIPT 1.docx');
 
-add('medicare_offer','Medicare transfer','Offer licensed specialist review',programScripts['medicare'],'REQUIRED: Get a clear YES before transferring. If the member does not clearly agree, do not transfer. Benefits vary by plan and county; do not guarantee benefits. Do not ask for a Social Security number in this guide.',[opt('Yes — warm transfer','medicare_transfer'),opt('Not sure — explanation','medicare_hesitant'),opt('No — other programs','internet_offer')]);
+add('medicare_medicaid','Medicare screening','Identify current Medicare coverage','What type of Medicare coverage do you have right now? Medicare Advantage plan, Medicare Supplement, Original Medicare only, or are you not sure?','Choose the coverage type the caller reports. Medicare Advantage proceeds to the Advantage handoff; Medicare Supplement checks the $150 monthly affordability requirement; Original Medicare only or Not sure proceeds to the caller preference question.',[opt('Medicare Advantage','medicare_advantage_transfer'),opt('Medicare Supplement','medicare_supp_afford'),opt('Original Medicare only','medicare_needs'),opt('Not sure','medicare_needs')],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_supp_afford','Medicare Supplement screening','Check $150 monthly affordability','And just so the advisor can match you with the right plans, are you able to afford a plan of at least $150 per month?','If YES, proceed to Medicare Supplement. If the caller cannot afford at least $150, use the document’s Medicare Advantage alternative.',[opt('YES — Can afford at least $150/month','medicare_supplement_transfer'),opt('NO — Offer Medicare Advantage instead','medicare_advantage_fallback_transfer')],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_needs','Medicare screening','Ask coverage preference','When it comes to your coverage, what matters most to you: a low or $0 monthly premium with extra benefits like dental, vision, and hearing, or the freedom to see any doctor who accepts Medicare with more predictable costs.','Use the caller’s preference to choose the appropriate option described in the supplied script.',[opt('$0 monthly premium — Medicare Advantage','medicare_advantage_transfer'),opt('Flexi doctor + Predictable costs — Medicare Supplement','medicare_supplement_transfer')],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_advantage_transfer','Medicare Advantage transfer','Medicare Advantage advisor handoff',"Perfect. Let me get one of our licensed advisors on the line. They'll go over the Medicare Advantage plans available in your area and answer any questions. This will just take a moment, so please stay on the line.\n\nSAY TO THE LICENSED ADVISOR\nHi, I have (First name) on the line from (State). They're (age), they're currently on (Medicare Advantage / Original Medicare / not sure), and they're interested in Medicare Advantage options. Please take over the call, and have a great day.",'The caller selected Medicare Advantage, either as their current coverage or preference. Complete the advisor handoff. If the transfer cannot proceed, explicitly close this path before moving to another program.',[opt('Transfer complete — Finish call','end'),opt('Transfer cannot proceed — Other programs',()=>closeProgramTransfer('medicare_advantage','medicare_other_programs'))],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_advantage_fallback_transfer','Medicare Advantage transfer','Medicare Advantage alternative — unable to afford Supplement',"No worries. That's completely fine. There are Medicare Advantage plans with low or even $0 monthly premiums that may be a better fit. Let me connect you with an advisor who can go over those with you.\n\nLet me get one of our licensed advisors on the line. They'll go over the Medicare Advantage plans available in your area and answer any questions. This will just take a moment, so please stay on the line.\n\nSAY TO THE LICENSED ADVISOR\nHi, I have (First name) on the line from (State). They're (age), they're currently on (Medicare Advantage / Original Medicare / not sure), and they're interested in Medicare Advantage options. Please take over the call, and have a great day.",'Use this route when the caller cannot afford at least $150 per month for Medicare Supplement. The wording follows the supplied document.',[opt('Transfer complete — Finish call','end'),opt('Transfer cannot proceed — Other programs',()=>closeProgramTransfer('medicare_advantage_fallback','medicare_other_programs'))],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_supplement_transfer','Medicare Supplement transfer','Medicare Supplement advisor handoff',"Perfect, you qualify. Let me get one of our licensed advisors on the line. They'll go over your Supplement options and answer any questions. This will just take a moment, so please stay on the line.\n\nSAY TO THE LICENSED ADVISOR\nHi, I have (First name) on the line from (State). They're (age), they're currently on (Medicare Supplement / Original Medicare / not sure), and they're interested in Medicare Supplements. Please take over the call, and have a great day.",'Use this route when the caller chooses Medicare Supplement, either by current coverage type and affordability or by their preference for flexibility and predictable costs.',[opt('Transfer complete — Finish call','end'),opt('Transfer cannot proceed — Other programs',()=>closeProgramTransfer('medicare_supplement','medicare_other_programs'))],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_other_programs','Medicare screening','Offer another program','The Medicare screening criteria are not met, or the caller needs to be routed to another program. Continue with the appropriate Helping Hands screening.','Choose a relevant alternative program and complete its screening. Do not mark the caller qualified for Medicare based on this route.',[opt('Debt screening','debt_q1'),opt('Tax screening','tax_q'),opt('ACA screening','aca_coverage'),opt('SSDI screening','ssdi_fulltime'),opt('MVA screening','mva_q'),opt('Internet screening','internet_offer'),opt('SLC screening','slc_fedloan'),opt('Education screening','edu_gate'),opt('Close call','end')],'MEDICARE SCRIPT 1.docx');
+
+add('medicare_offer','Medicare transfer','Offer licensed specialist review',programScripts['medicare'],'REQUIRED: Get a clear YES before transferring. If the member does not clearly agree, do not transfer. Benefits vary by plan and county; do not guarantee benefits. Do not ask for a Social Security number in this guide.',[opt('Yes — warm transfer','medicare_transfer'),opt('Not sure — explanation','medicare_hesitant'),opt('No — decline Medicare; continue screening',()=>declineProgramOffer('medicare','internet_offer'))]);
 
 N['medicare_offer'].script=programScripts['medicare']; N['medicare_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
-add('medicare_hesitant','Medicare rebuttal','Hesitation','I understand. This is only a chance to review available Medicare options with a licensed specialist. A review does not mean you need to change plans. Would you like to speak with them?','ACA / Medicare rebuttals are also available in the top navigation.',[opt('Yes','medicare_transfer'),opt('No','internet_offer')]);
+add('medicare_hesitant','Medicare rebuttal','Hesitation','I understand. This is only a chance to review available Medicare options with a licensed specialist. A review does not mean you need to change plans. Would you like to speak with them?','ACA / Medicare rebuttals are also available in the top navigation.',[opt('Yes','medicare_transfer'),opt('No — decline Medicare; continue screening',()=>declineProgramOffer('medicare','internet_offer'))]);
 
-add('medicare_transfer','Warm transfer','Medicare handshake','Thank you. I’ll connect you with a licensed Medicare agent who can review your coverage and answer questions.\n\nTo the specialist: I have a Helping Hands member on the line who would like to explore Medicare options. Thank you.','WARM TRANSFER. Consent required.',[opt('Complete','end'),opt('Explore Internet','internet_offer')]);
+add('medicare_transfer','Warm transfer','Medicare handshake','Thank you. I’ll connect you with a licensed Medicare agent who can review your coverage and answer questions.\n\nTo the specialist: I have a Helping Hands member on the line who would like to explore Medicare options. Thank you.','WARM TRANSFER. Consent required.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close Medicare path',()=>closeProgramTransfer('medicare','internet_offer'))]);
 
 add('mva_q','MVA screening','Recent motor-vehicle accident','Have you been in a motor-vehicle accident in the last two years, regardless of who was at fault?','Source: yes → offer MVA specialist. For the 18–48 script this is placed after ACA disqualification.',[opt('Yes — offer specialist','mva_offer'),opt('No — other programs','internet_offer')]);
 
-add('mva_offer','MVA transfer','Offer MVA specialist','Based on the recent accident you mentioned, I can connect you with a specialist to discuss possible help with accident-related legal claims. Would you like me to connect you?','Avoid guaranteeing legal representation or claim outcomes.',[opt('Yes — transfer','mva_transfer'),opt('No — continue','internet_offer')]);
+add('mva_offer','MVA transfer','Offer MVA specialist','Based on the recent accident you mentioned, I can connect you with a specialist to discuss possible help with accident-related legal claims. Would you like me to connect you?','Avoid guaranteeing legal representation or claim outcomes.',[opt('Yes — transfer','mva_transfer'),opt('No — decline MVA; continue screening',()=>declineProgramOffer('mva','internet_offer'))]);
 
 N['mva_offer'].script=programScripts['mva']; N['mva_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
-add('mva_transfer','Transfer','MVA transfer','Please stay on the line while I connect you with a specialist to discuss the accident and possible options.','Follow your approved transfer and consent procedure.',[opt('Complete','end'),opt('Continue','internet_offer')]);
+add('mva_transfer','Transfer','MVA transfer','Please stay on the line while I connect you with a specialist to discuss the accident and possible options.','Follow your approved transfer and consent procedure.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close MVA path',()=>closeProgramTransfer('mva','internet_offer'))]);
 
-add('internet_offer','Internet screening','Discounted internet','Some internet providers may offer discounted high-speed internet options. Would you be interested in checking what is available in your area?','Source says offer Internet in all tracks.',[opt('Yes — residence question','internet_home'),opt('Not sure — rebuttal','internet_hesitant'),opt('No — next program','edu_gate')]);
+add('internet_offer','Internet screening','Discounted internet','Some internet providers may offer discounted high-speed internet options. Would you be interested in checking what is available in your area?','Source says offer Internet in all tracks.',[opt('Yes — residence question','internet_home'),opt('Not sure — rebuttal','internet_hesitant'),opt('No — continue to other programs','edu_gate')]);
 
 N['internet_offer'].script=programScripts['internet']; N['internet_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
-add('internet_hesitant','Internet rebuttal','Internet concerns','We can arrange a brief consultation to see which internet services might be available in your area. There’s no obligation to choose a plan. Would you like to check?','Do not guarantee any price or discount.',[opt('Yes','internet_home'),opt('No','edu_gate')]);
+add('internet_hesitant','Internet rebuttal','Internet concerns','We can arrange a brief consultation to see which internet services might be available in your area. There’s no obligation to choose a plan. Would you like to check?','Do not guarantee any price or discount.',[opt('Yes','internet_home'),opt('No — continue to other programs','edu_gate')]);
 
 add('internet_home','Internet screening','Primary residence','Do you have a primary residence where internet service could be installed, and do you manage the internet service there?','Source requires yes.',[opt('Yes — transfer','internet_transfer'),opt('No — next','edu_gate')]);
 
-add('internet_transfer','Transfer','Internet handshake','Great. I’ll connect you with a specialist to review available internet options.\n\nTo the specialist: I have a Helping Hands member who is interested in the Internet Program. I’ll hand the call over now.','Confirm explicit consent before transfer.',[opt('Complete','end'),opt('Other programs','edu_gate')]);
+add('internet_transfer','Transfer','Internet handshake','Great. I’ll connect you with a specialist to review available internet options.\n\nTo the specialist: I have a Helping Hands member who is interested in the Internet Program. I’ll hand the call over now.','Confirm explicit consent before transfer.',[opt('Transfer complete — finish call','end'),opt('Transfer cannot proceed — close Internet path',()=>closeProgramTransfer('internet','edu_gate'))]);
 
 add('edu_gate','Education screening','Check education exclusions','[AGENT ONLY] Review Education program exclusions before screening.','Do NOT offer EDU for age 64+, homelessness, or Medicaid, according to the source. For the 64+ track, use Finish. Else continue only after verifying these exclusions.',[opt('Eligible — begin Education questions','edu_diploma'),opt('Excluded — close','end')]);
 
@@ -491,7 +608,7 @@ add('edu_college','Education screening','Current enrollment','Are you currently 
 
 add('edu_computer','Education screening','Computer access','Do you currently own or have regular access to a computer or laptop?','Source: no → disqualify.',[opt('Yes — offer transfer','edu_offer'),opt('No','end')]);
 
-add('edu_offer','Education transfer','Offer education specialist','I can connect you with an education specialist who can review available programs and potential grant options. Would you like me to connect you?','The source specifies a blind transfer without waiting for the receiving agent to answer. Confirm consent.',[opt('Yes — blind transfer','edu_transfer'),opt('No — close','end')]);
+add('edu_offer','Education transfer','Offer education specialist','I can connect you with an education specialist who can review available programs and potential grant options. Would you like me to connect you?','The source specifies a blind transfer without waiting for the receiving agent to answer. Confirm consent.',[opt('Yes — blind transfer','edu_transfer'),opt('No — decline Education; close',()=>declineProgramOffer('edu','end'))]);
 
 N['edu_offer'].script=programScripts['edu']; N['edu_offer'].source='TRANSFER PER PROGRAM 1.docx';
 
@@ -502,29 +619,71 @@ add('end','Close','Close the call','Thank you for speaking with Helping Hands to
 const rebuttals={debt:[['Why offer debt relief?','The purpose is to explore whether the member has more manageable repayment options, potentially reducing monthly pressure, preventing further financial hardship, and creating a realistic plan. Terms depend on eligibility and the program.'],['Agent response','I appreciate you sharing your situation. I am offering this option to see whether a specialist can help you explore more manageable ways to address your outstanding debts. We want to make sure any arrangement is realistic for your budget.'],['“I can’t even afford my bills.”','That is exactly why we want to see whether a more manageable option exists. A specialist can discuss your situation and help determine whether the program would actually be suitable for your budget.']],health:[['Why offer ACA or Medicare?','Health coverage may help with access to medical services, unexpected expenses, and predictable healthcare costs. ACA premium tax credits depend on eligibility; Medicare benefits vary by plan and location.'],['Agent response','I understand your expenses are a concern. This review is simply to see whether any affordable health coverage or Medicare plan options are available for your circumstances. A specialist can explain the costs and benefits so you can decide whether they make sense.'],['“I can’t afford insurance.”','I understand, and I would not want to add to your financial stress. Before ruling it out, a specialist can check whether any financial assistance or more affordable coverage options are available. There is no obligation to choose a plan.']],general:[['“I’m not interested.”','I understand. No problem. If you change your mind, a specialist can explain available options and eligibility. Would you like to continue with another program?'],['“Is there a cost?”','I am helping with preliminary screening. The specialist can explain any costs, conditions, or fees before you make a decision.'],['“What is Helping Hands?”','Helping Hands shares information about programs, resources, and benefits members may be eligible to explore.'],['“How did you get my information?”','Please refer to your approved company disclosure and verify the member’s source of contact before making a claim.'],['“I need rent, food, or utility support.”','I understand those are your priorities. I can share the programs available to discuss on this call, and you can also look for local agencies supporting rental, food, and utility needs.'],['Questions about detailed eligibility','That is a good question. The specialist can explain the program’s eligibility, costs, and terms after reviewing your circumstances.']]};
 
 let current='start',history=[],visited=['start'];let programSelection='debt';
-function go(dest){let target=typeof dest==='function'?dest():dest;if(target==='start'){if(isDebtPriorityLocked()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}reset();return}if(!N[target]){console.error('Unknown node',target);return}
-  if(isDebtPriorityLocked()&&!DEBT_LOCK_ALLOWED_NODES.has(target)){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}
-  if(debtPriorityStatus==='completed'&&target!=='end'){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}
-  debtPriorityAttemptWarning=false;
-  if(target==='debt_q1'&&!isDebtPriorityLocked()&&!['debt_q1','debt_q2','debt_med_q2','debt_offer','debt_hesitant','debt_transfer'].includes(current)){clearDebtPriorityState();}
-  if(current==='age'){if(target==='young_income')activeTrack='young';if(target==='middle_income')activeTrack='middle';if(target==='senior_income')activeTrack='senior'}/* Age 64+ skips Education only. Keep the edu_precheck_* nodes because they are the SLC enrollment screening. */if(activeTrack==='senior' && (/^edu_/.test(target) && !/^edu_precheck_/.test(target) || target==='edu_gate' || target==='edu_interest')){target='end'}history.push(current);current=target;visited.push(target);render()}
+function go(dest){
+  let target=typeof dest==='function'?dest():dest;
+  if(target==='start'){if(isAnyPriorityDecisionLocked()){markPriorityNavigationBlocked();return;}reset();return;}
+  if(!N[target]){console.error('Unknown node',target);return;}
+  if(isDebtPriorityLocked()&&!DEBT_LOCK_ALLOWED_NODES.has(target)){markPriorityNavigationBlocked();return;}
+  if(isProgramPriorityLocked()&&!canNavigateWithinPriority(target)){markPriorityNavigationBlocked();return;}
+  if(isAnyPriorityCompleted()&&target!=='end'){markPriorityNavigationBlocked();return;}
+  debtPriorityAttemptWarning=false;programPriorityAttemptWarning=false;
+  if(target==='end'&&programPriorityStatus==='transfer-in-progress'&&programPriorityMode==='main'&&current===programPriorityTransferNode){programPriorityStatus='completed';}
+  if(target==='end'&&debtPriorityStatus==='transfer-in-progress'&&current==='debt_transfer'){debtPriorityStatus='completed';}
+  if(current==='age'){if(target==='young_income')activeTrack='young';if(target==='middle_income')activeTrack='middle';if(target==='senior_income')activeTrack='senior';}
+  /* A qualified buyer becomes the priority when the flow reaches its offer. */
+  const offerKey=PRIORITY_OFFER_NODE_TO_KEY[target];
+  if(offerKey&&!isAnyPriorityDecisionLocked()&&!isAnyPriorityCompleted())beginMainProgramPriority(offerKey,'qualified-pending');
+  /* Direct-to-transfer programs (e.g. Internet) also become priority at transfer. */
+  const transferKey=PRIORITY_TRANSFER_NODE_TO_KEY[target];
+  if(transferKey&&!isAnyPriorityCompleted()){
+    if(isProgramPriorityLocked()&&programPriorityMode==='main'&&programPriorityKey===transferKey)programPriorityStatus='transfer-in-progress';
+    else if(isProgramPriorityLocked()&&programPriorityMode==='main'&&samePriorityFamily(programPriorityKey,transferKey))beginMainProgramPriority(transferKey,'transfer-in-progress');
+    else if(!isAnyPriorityDecisionLocked())beginMainProgramPriority(transferKey,'transfer-in-progress');
+  }
+  /* Age 64+ skips Education only. Keep edu_precheck_* because those nodes screen SLC enrollment. */
+  if(activeTrack==='senior'&&(/^edu_/.test(target)&&!/^edu_precheck_/.test(target)||target==='edu_gate'||target==='edu_interest'))target='end';
+  history.push(current);current=target;visited.push(target);render();
+}
 
 function syncScreenerButtons(){
   const restricted=isDebtFlowRestricted();
   const screeningEntryIds=['openCallback','openTicket','openDebtInbound','openSLCInbound','openACAInbound'];
-  screeningEntryIds.forEach(id=>{const b=document.getElementById(id);if(!b)return;b.disabled=restricted;b.title=restricted?'Unavailable while the current Debt-priority call is pending or complete':'Open this separate screening tool';});
-  const resetButtons=['resetTop','resetBottom'];
-  resetButtons.forEach(id=>{const b=document.getElementById(id);if(!b)return;b.disabled=isDebtPriorityLocked();b.title=isDebtPriorityLocked()?'Finish or explicitly close the Debt decision before resetting':'Reset the call / start a new lead';});
+  screeningEntryIds.forEach(id=>{const b=document.getElementById(id);if(!b)return;b.disabled=restricted;b.title=restricted?'Unavailable while the current program decision is pending or complete':'Open this separate screening tool';});
+  document.querySelectorAll('[data-script]').forEach(b=>{b.disabled=restricted;b.title=restricted?'Other program scripts are locked until the current program decision is resolved':'Open program script reference';});
+  ['resetTop','resetBottom'].forEach(id=>{const b=document.getElementById(id);if(!b)return;b.disabled=isAnyPriorityDecisionLocked();b.title=isAnyPriorityDecisionLocked()?'Finish or explicitly close the current priority program before resetting':'Reset the call / start a new lead';});
 }
-function requestReset(){if(isDebtPriorityLocked()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}reset();}
-
-function render(){const n=N[current];document.getElementById('eduCandidate').textContent=[slcCandidate?'✓ SLC candidate: QUALIFIED — not enrolled + $10,000+ federal student loans; continue normal screening flow':'',eduInterest?'✓ Education interest: YES — possible candidate; screen later':'',medicalDebtCandidate?'✓ Medical-debt candidate: Debt 2k+ Medical Bills — $135/month payment screen met':''].filter(Boolean).join('\n');updateDebtPriorityNotice();document.getElementById('phase').textContent=n.phase;document.getElementById('heading').textContent=n.title;renderBoldText(document.getElementById('bodyText'),n.script);document.getElementById('note').textContent=n.note;document.getElementById('source').textContent='Source: '+n.source;const ch=document.getElementById('choices');ch.replaceChildren();n.options.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o.label;b.className=i===0?'primary':'';b.addEventListener('click',()=>go(o.to));ch.appendChild(b)});const previous=history.length?history[history.length-1]:null;document.getElementById('backBtn').disabled=!history.length||debtPriorityStatus==='completed'||(isDebtPriorityLocked()&&!DEBT_LOCK_ALLOWED_NODES.has(previous));document.getElementById('backBtn').title=debtPriorityStatus==='completed'?'Call finished. Start a new call to begin another lead.':(isDebtPriorityLocked()&&!DEBT_LOCK_ALLOWED_NODES.has(previous))?'Back is paused while the qualified Debt decision is pending. Complete or close the Debt path first.':'Go back one step';document.getElementById('trail').textContent='Step '+visited.length+' • '+(current==='start'?'New call':activeTrack==='young'?'18–48':activeTrack==='middle'?'49–63':'64+');const stages=[['Intro','start'],['Income screening','age'],...(isDebtFlowRestricted()?[[debtPriorityStatus==='transfer-in-progress'?'Debt transfer pending':debtPriorityStatus==='completed'?'Debt transfer completed':'Debt offer decision',debtPriorityStatus==='transfer-in-progress'?'debt_transfer':debtPriorityStatus==='completed'?'end':'debt_offer']]:[['Debt screening','debt_q1']]),['Financial screening','finance_after_debt'],[activeTrack==='young'?'ACA screening':activeTrack==='middle'?'SSDI screening':'Medicare screening',activeTrack==='young'?'aca_coverage':activeTrack==='middle'?'ssdi_fulltime':'medicare_parts'],['MVA screening','mva_q'],['Internet screening','internet_offer'],['SLC screening','slc_fedloan'],[activeTrack==='senior'?'Education (skip for 64+)':'Education screening',activeTrack==='senior'?'end':'edu_gate'],['Close','end']];document.getElementById('stages').replaceChildren(...stages.map(([t,dest])=>{const e=document.createElement('button');e.type='button';const locked=isDebtFlowRestricted()&&!(debtPriorityStatus==='completed'?dest==='end':DEBT_LOCK_ALLOWED_NODES.has(dest));e.className='track'+(n.phase===t||n.phase.includes(t.split(' ')[0])?' active':'')+(locked?' locked':'');e.textContent=t;e.setAttribute('aria-label','Jump to '+t);e.title=locked?(debtPriorityStatus==='completed'?'Call finished — start a new call for the next lead':'Locked while the qualified Debt decision is pending'):'Jump to '+t;e.addEventListener('click',()=>go(dest));return e}));document.getElementById('progressBar').style.width=(Math.min(100,visited.length*5))+'%';document.getElementById('counter').textContent=visited.length+' screen(s) visited';syncScreenerButtons();}
-
-function reset(){current='start';history=[];visited=['start'];activeTrack='young';eduInterest=false;slcCandidate=false;medicalDebtCandidate=false;incomeRoute='other';clearDebtPriorityState();programSelection='debt';document.getElementById('overlay').classList.remove('show');document.getElementById('scriptOverlay').classList.remove('show');closeState();clearState();render();window.scrollTo({top:0,behavior:'smooth'})}function back(){if(!history.length)return;if(debtPriorityStatus==='completed'){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}const previous=history[history.length-1];if(isDebtPriorityLocked()&&!DEBT_LOCK_ALLOWED_NODES.has(previous)){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}debtPriorityAttemptWarning=false;current=history.pop();visited.pop();render()}
+function requestReset(){if(isAnyPriorityDecisionLocked()){markPriorityNavigationBlocked();return;}reset();}
+function getStages(){
+  if(isDebtPriorityLocked()||debtPriorityStatus==='completed'){
+    return [['Intro','start'],['Income screening','age'],[debtPriorityStatus==='transfer-in-progress'?'Debt transfer pending':debtPriorityStatus==='completed'?'Debt transfer completed':'Debt offer decision',debtPriorityStatus==='transfer-in-progress'?'debt_transfer':debtPriorityStatus==='completed'?'end':'debt_offer'],['Close','end']];
+  }
+  if(isProgramPriorityLocked()||programPriorityStatus==='completed'){
+    if(programPriorityMode==='standalone')return [[programPriorityName+' priority decision','__priority_active__'],['Close','end']];
+    if(programPriorityStatus==='completed')return [[programPriorityName+' transfer completed','end']];
+    const out=[];if(programPriorityStatus==='qualified-pending'&&programPriorityOfferNode)out.push([programPriorityName+' offer',programPriorityOfferNode]);else if(programPriorityStatus==='qualified-pending')out.push([programPriorityName+' screening decision',current]);else if(programPriorityTransferNode)out.push([programPriorityName+' transfer',programPriorityTransferNode]);out.push(['Close','end']);return out;
+  }
+  return [['Intro','start'],['Income screening','age'],['Debt screening','debt_q1'],['Financial screening','finance_after_debt'],['ACA screening','aca_coverage'],['SSDI screening','ssdi_fulltime'],['Medicare screening','medicare_start'],['MVA screening','mva_q'],['Internet screening','internet_offer'],['SLC screening','slc_fedloan'],[activeTrack==='senior'?'Education (skip for 64+)':'Education screening',activeTrack==='senior'?'end':'edu_gate'],['Close','end']];
+}
+function render(){
+  const n=N[current];
+  document.getElementById('eduCandidate').textContent=[slcCandidate?'✓ SLC candidate: QUALIFIED — not enrolled + $10,000+ federal student loans; continue normal screening flow':'',eduInterest?'✓ Education interest: YES — possible candidate; screen later':'',medicalDebtCandidate?'✓ Medical-debt candidate: Debt 2k+ Medical Bills — $135/month payment screen met':''].filter(Boolean).join('\n');
+  updateDebtPriorityNotice();document.getElementById('phase').textContent=n.phase;document.getElementById('heading').textContent=n.title;renderBoldText(document.getElementById('bodyText'),n.script);document.getElementById('note').textContent=n.note;document.getElementById('source').textContent='Source: '+n.source;
+  const ch=document.getElementById('choices');ch.replaceChildren();n.options.forEach((o,i)=>{const b=document.createElement('button');b.textContent=o.label;b.className=i===0?'primary':'';b.addEventListener('click',()=>go(o.to));ch.appendChild(b);});
+  const previous=history.length?history[history.length-1]:null;
+  const completed=isAnyPriorityCompleted();const locked=isAnyPriorityDecisionLocked();
+  document.getElementById('backBtn').disabled=!history.length||completed||(locked&&!canNavigateWithinPriority(previous));
+  document.getElementById('backBtn').title=completed?'Call finished. Start a new call to begin another lead.':(locked&&!canNavigateWithinPriority(previous))?'Back is limited to steps within the current priority program. Other buyer screenings remain locked.':'Go back one step within the current program if you need to correct a misclick';
+  const trackLabel=current.startsWith('medicare_')?'Medicare screening':current==='start'?'New call':activeTrack==='young'?'18–48':activeTrack==='middle'?'49–63':'64+';document.getElementById('trail').textContent='Step '+visited.length+' • '+trackLabel;
+  const stages=getStages();
+  document.getElementById('stages').replaceChildren(...stages.map(([t,dest])=>{const e=document.createElement('button');e.type='button';const isPseudo=dest==='__priority_active__';const stageAllowed=!isPseudo&&(!isDebtFlowRestricted()||(debtPriorityStatus==='completed'||programPriorityStatus==='completed'?dest==='end':canNavigateWithinPriority(dest)));e.disabled=!stageAllowed;const medicareNode=current.startsWith('medicare_');const isMedicareStage=t==='Medicare screening';e.className='track'+(n.phase===t||n.phase.includes(t.split(' ')[0])||(isMedicareStage&&medicareNode)?' active':'')+(!stageAllowed?' locked':'');e.textContent=t;e.setAttribute('aria-label','Jump to '+t);e.title=!stageAllowed?(isAnyPriorityCompleted()?'Call finished — reset only for a new lead':'Locked while the current qualified program is being handled'):'Jump to '+t;e.addEventListener('click',()=>go(dest));return e;}));
+  document.getElementById('progressBar').style.width=(Math.min(100,visited.length*5))+'%';document.getElementById('counter').textContent=visited.length+' screen(s) visited';syncScreenerButtons();
+}
+function reset(){current='start';history=[];visited=['start'];activeTrack='young';eduInterest=false;slcCandidate=false;medicalDebtCandidate=false;incomeRoute='other';clearDebtPriorityState();clearProgramPriorityState();programSelection='debt';document.getElementById('overlay').classList.remove('show');document.getElementById('scriptOverlay').classList.remove('show');closeState();clearState();closeDebtInbound();closeAdditionalInbound(slcInboundFlow);closeAdditionalInbound(acaInboundFlow);render();window.scrollTo({top:0,behavior:'smooth'});}
+function back(){if(!history.length)return;if(isAnyPriorityCompleted()){markPriorityNavigationBlocked();return;}const previous=history[history.length-1];if(isDebtPriorityLocked()&&!canNavigateWithinPriority(previous)||isProgramPriorityLocked()&&!canNavigateWithinPriority(previous)){markPriorityNavigationBlocked();return;}if(debtPriorityStatus==='transfer-in-progress'&&DEBT_LOCK_ALLOWED_NODES.has(previous)){debtPriorityStatus='qualified-pending';debtPriorityAttemptWarning=false;}if(programPriorityStatus==='transfer-in-progress'&&programPriorityMode==='main'&&programPriorityAllowedNodes.has(previous)){programPriorityStatus='qualified-pending';programPriorityAttemptWarning=false;}debtPriorityAttemptWarning=false;programPriorityAttemptWarning=false;current=history.pop();visited.pop();render();}
 
 function showRebut(tab){const overlay=document.getElementById('overlay');overlay.classList.add('show');document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('selected',b.dataset.tab===tab));const host=document.getElementById('rebutContent');host.replaceChildren();for(const [title,content] of rebuttals[tab]){const el=document.createElement('div');el.className='rebuttal';const h=document.createElement('h3');h.textContent=title;const p=document.createElement('div');p.textContent=content;el.append(h,p);host.appendChild(el)}document.getElementById('closeModal').focus()}
 
-function showProgram(key){programSelection=key;document.getElementById('programTitle').textContent=(programNames[key]||key)+' — pre-transfer script';renderBoldText(document.getElementById('programContent'),programScripts[key]||'No script available');document.getElementById('scriptOverlay').classList.add('show');document.getElementById('closeProgram').focus();}
+function showProgram(key){if(isAnyPriorityCompleted()){markPriorityNavigationBlocked();return;}if(isDebtPriorityLocked()&&key!=='debt'){markPriorityNavigationBlocked();return;}if(isProgramPriorityLocked()&&key!==programPriorityKey){markPriorityNavigationBlocked();return;}programSelection=key;document.getElementById('programTitle').textContent=(programNames[key]||key)+' — pre-transfer script';renderBoldText(document.getElementById('programContent'),programScripts[key]||'No script available');document.getElementById('scriptOverlay').classList.add('show');document.getElementById('closeProgram').focus();}
 
 function closeProgram(){document.getElementById('scriptOverlay').classList.remove('show');}
 
@@ -548,7 +707,7 @@ const ticketAnswer=document.getElementById('ticketAnswer');
 const ticketPrograms=[['debt','Debt'],['tax','Tax'],['aca','ACA'],['medicare','Medicare'],['ssdi','SSDI'],['mva','MVA'],['internet','Internet'],['edu','Education'],['loan','Personal Loans'],['slc','Student Loans (SLC)']];
 function closeTicket(){ticketOverlay.classList.remove('show');}
 function resetTicketAnswer(){ticketAnswer.replaceChildren();ticketAnswer.hidden=true;}
-document.getElementById('openTicket').addEventListener('click',()=>{if(isDebtFlowRestricted()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}resetTicketAnswer();ticketOverlay.classList.add('show');document.getElementById('ticketNo').focus();});
+document.getElementById('openTicket').addEventListener('click',()=>{if(isDebtFlowRestricted()){markPriorityNavigationBlocked();return;}resetTicketAnswer();ticketOverlay.classList.add('show');document.getElementById('ticketNo').focus();});
 document.getElementById('closeTicket').addEventListener('click',closeTicket);
 document.getElementById('ticketNo').addEventListener('click',()=>{
   ticketAnswer.replaceChildren();
@@ -688,6 +847,7 @@ function debtInboundAddText(parent, tag, className, value) {
 function renderDebtInboundStep(stepId) {
   const step = debtInboundSteps[stepId] || debtInboundSteps.opening;
   debtInboundCurrentStep = stepId;
+  setStandalonePriorityStep(null, stepId);
   debtInboundContent.replaceChildren();
 
   const top = document.createElement('div');
@@ -766,7 +926,7 @@ function renderDebtInboundStep(stepId) {
   const back = document.createElement('button');
   back.type = 'button';
   back.textContent = '← Back';
-  back.disabled = debtInboundHistory.length === 0;
+  back.disabled = debtInboundHistory.length === 0 || (programPriorityMode === 'standalone' && programPriorityKey === 'debt-inbound' && programPriorityStatus === 'transfer-in-progress') || step.complete;
   back.addEventListener('click', () => {
     const previous = debtInboundHistory.pop();
     if (previous) renderDebtInboundStep(previous);
@@ -774,6 +934,8 @@ function renderDebtInboundStep(stepId) {
   const restart = document.createElement('button');
   restart.type = 'button';
   restart.textContent = '↻ Restart Debt Inbound';
+  restart.disabled = programPriorityMode === 'standalone' && programPriorityKey === 'debt-inbound' && isProgramPriorityLocked();
+  restart.title = restart.disabled ? 'Complete or explicitly close the current Debt Inbound decision first' : 'Restart Debt Inbound';
   restart.addEventListener('click', startDebtInbound);
   footer.append(back, restart);
   debtInboundContent.appendChild(footer);
@@ -784,8 +946,8 @@ function startDebtInbound() {
   renderDebtInboundStep('opening');
   debtInboundOverlay.classList.add('show');
 }
-function closeDebtInbound() { debtInboundOverlay.classList.remove('show'); }
-document.getElementById('openDebtInbound').addEventListener('click', ()=>{if(isDebtFlowRestricted()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}startDebtInbound();});
+function closeDebtInbound() { closeStandalonePriority(null); debtInboundOverlay.classList.remove('show'); }
+document.getElementById('openDebtInbound').addEventListener('click', ()=>{if(isDebtFlowRestricted()){markPriorityNavigationBlocked();return;}startDebtInbound();});
 document.getElementById('closeDebtInbound').addEventListener('click', closeDebtInbound);
 debtInboundOverlay.addEventListener('click', e => { if (e.target === debtInboundOverlay) closeDebtInbound(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDebtInbound(); });
@@ -949,6 +1111,7 @@ const acaInboundFlow = {
 function renderAdditionalInboundStep(flow, stepId) {
   const step = flow.steps[stepId] || flow.steps.opening;
   flow.currentStep = stepId;
+  setStandalonePriorityStep(flow, stepId);
   flow.content.replaceChildren();
 
   const top = document.createElement('div');
@@ -1021,7 +1184,7 @@ function renderAdditionalInboundStep(flow, stepId) {
   const back = document.createElement('button');
   back.type = 'button';
   back.textContent = '← Back';
-  back.disabled = flow.history.length === 0;
+  back.disabled = flow.history.length === 0 || (programPriorityMode === 'standalone' && programPriorityFlow === flow && programPriorityStatus === 'transfer-in-progress') || step.complete;
   back.addEventListener('click', () => {
     const previous = flow.history.pop();
     if (previous) renderAdditionalInboundStep(flow, previous);
@@ -1029,6 +1192,8 @@ function renderAdditionalInboundStep(flow, stepId) {
   const restart = document.createElement('button');
   restart.type = 'button';
   restart.textContent = '↻ Restart ' + flow.title;
+  restart.disabled = programPriorityMode === 'standalone' && programPriorityFlow === flow && isProgramPriorityLocked();
+  restart.title = restart.disabled ? 'Complete or explicitly close the current program decision first' : 'Restart ' + flow.title;
   restart.addEventListener('click', () => startAdditionalInbound(flow));
   footer.append(back, restart);
   flow.content.appendChild(footer);
@@ -1039,12 +1204,12 @@ function startAdditionalInbound(flow) {
   renderAdditionalInboundStep(flow, 'opening');
   flow.overlay.classList.add('show');
 }
-function closeAdditionalInbound(flow) { flow.overlay.classList.remove('show'); }
+function closeAdditionalInbound(flow) { closeStandalonePriority(flow); flow.overlay.classList.remove('show'); }
 
-document.getElementById('openSLCInbound').addEventListener('click', () => {if(isDebtFlowRestricted()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}startAdditionalInbound(slcInboundFlow);});
+document.getElementById('openSLCInbound').addEventListener('click', () => {if(isDebtFlowRestricted()){markPriorityNavigationBlocked();return;}startAdditionalInbound(slcInboundFlow);});
 document.getElementById('closeSLCInbound').addEventListener('click', () => closeAdditionalInbound(slcInboundFlow));
 slcInboundFlow.overlay.addEventListener('click', e => { if (e.target === slcInboundFlow.overlay) closeAdditionalInbound(slcInboundFlow); });
-document.getElementById('openACAInbound').addEventListener('click', () => {if(isDebtFlowRestricted()){debtPriorityAttemptWarning=true;updateDebtPriorityNotice();return;}startAdditionalInbound(acaInboundFlow);});
+document.getElementById('openACAInbound').addEventListener('click', () => {if(isDebtFlowRestricted()){markPriorityNavigationBlocked();return;}startAdditionalInbound(acaInboundFlow);});
 document.getElementById('closeACAInbound').addEventListener('click', () => closeAdditionalInbound(acaInboundFlow));
 acaInboundFlow.overlay.addEventListener('click', e => { if (e.target === acaInboundFlow.overlay) closeAdditionalInbound(acaInboundFlow); });
 document.addEventListener('keydown', e => {
